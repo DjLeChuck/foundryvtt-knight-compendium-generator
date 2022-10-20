@@ -19,8 +19,10 @@ framework:
 
     http_client:
         scoped_clients:
-            knight.client:
+            knight_api.client:
                 base_uri: 'https://www.knight-jdr-systeme.fr/api/'
+            knight_media.client:
+                base_uri: 'https://www.knight-jdr-systeme.fr/static/gm/img/'
 
 when@test:
     framework:

@@ -8,45 +8,40 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\Serializer\Encoder\JsonEncode;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\SerializerInterface;
-use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 #[AsCommand(
     name: 'app:compendium:modules',
     description: 'Génération du compendium des modules',
 )]
-class CompendiumModulesCommand extends Command
+class CompendiumModulesCommand extends AbstractCompendiumCommand
 {
-    private HttpClientInterface $client;
-    private SerializerInterface $serializer;
-
-    public function __construct(HttpClientInterface $knightClient, SerializerInterface $serializer)
-    {
-        $this->client = $knightClient;
-        $this->serializer = $serializer;
-
-        parent::__construct();
-    }
-
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $response = $this->client->request('GET', 'module');
         $modules = [];
 
-        foreach ($response->toArray() as $data) {
-            $itemResponse = $this->client->request('GET', 'module/'.$data['id']);
-            $apiData = $itemResponse->toArray();
+        foreach ($this->api->get('module') as $data) {
+            $apiData = $this->api->get('module/'.$data['id']);
+
+            // @todo TMP - À retirer quand les catégories Prestige seront ajoutées
+            try {
+                $this->getCategory($apiData['category']['name']);
+            } catch (\Throwable) {
+                continue;
+            }
+
             $slotData = current($apiData['slots']);
             $nbLevels = \count($apiData['levels']);
             $moduleData = [
                 'name'   => $apiData['name'],
                 'type'   => 'module',
-                'img'    => 'systems/knight/assets/icons/module.svg',
+                'img'    => $this->getImg($apiData['slug']),
                 'system' => [
-                    'slots' => [
+                    'categorie' => $this->getCategory($apiData['category']['name']),
+                    'slots'     => [
                         'tete'        => false !== $slotData ? $slotData['head'] : 0,
                         'brasGauche'  => false !== $slotData ? $slotData['left_arm'] : 0,
                         'brasDroit'   => false !== $slotData ? $slotData['right_arm'] : 0,
@@ -66,11 +61,19 @@ class CompendiumModulesCommand extends Command
 
                 $levelData['_id'] = $this->generateId($levelData['name']);
                 $levelData['system'] = array_merge($levelData['system'], [
-                    'description' => $level['description'],
+                    'description' => $this->cleanDescription($level['description']),
                     'prix'        => $level['cost'],
                     'activation'  => $this->getActivation($level['activation']),
                     'rarete'      => $this->getRarity($level['rarity']),
+                    'portee'      => $this->getReach($level['reach']),
+                    'energie'     => [
+                        'tour'           => ['value' => 0, 'label' => 'Tour'],
+                        'minute'         => ['value' => 0, 'label' => 'Minute'],
+                        'supplementaire' => 0,
+                    ],
                 ]);
+
+                $this->setEnergy($level, $levelData);
 
                 $modules[] = $this->serializer->serialize(
                     $levelData,
@@ -92,18 +95,51 @@ class CompendiumModulesCommand extends Command
         return Command::SUCCESS;
     }
 
-    private function getActivation(?string $value): ?string
+    private function getCategory(string $value): string
     {
-        if (null === $value) {
-            return null;
+        return match ($value) {
+            'Amélioration' => 'amelioration',
+            'Automatisé' => 'automatise',
+            'Contact' => 'contact',
+            'Distance' => 'distance',
+            'Défense' => 'defense',
+            'Déplacement' => 'deplacement',
+            'Tactique' => 'tactique',
+            'Utilitaire' => 'utilitaire',
+            'Visée' => 'visée',
+            default => throw new \InvalidArgumentException(sprintf('Catégorie "%s" invalide', $value)),
+        };
+    }
+
+    private function getImg(string $slug): string
+    {
+        static $existings = null;
+
+        if (null === $existings) {
+            $existings = [];
+            $finder = new Finder();
+
+            foreach ($finder->files()->in('var/files/modules') as $file) {
+                $existings[] = $file->getFilename();
+            }
         }
 
-        return [
-                   'Aucune'       => 'aucune',
-                   'Déplacement'  => 'deplacement',
-                   'Combat'       => 'combat',
-                   'Tour complet' => 'combat', // ?
-               ][$value];
+        if (\in_array($slug.'.png', $existings, true)) {
+            return 'systems/knight/assets/modules/'.$slug.'.png';
+        }
+
+        return 'systems/knight/assets/icons/module.svg';
+    }
+
+    private function getActivation(?string $value): ?string
+    {
+        return match ($value) {
+            null, 'Aucune' => 'aucune',
+            'Déplacement' => 'deplacement',
+            'Combat' => 'combat',
+            'Tour complet' => 'tourComplet',
+            default => throw new \InvalidArgumentException(sprintf('Activation "%s" invalide', $value)),
+        };
     }
 
     private function getRarity(?string $value): ?string
@@ -120,16 +156,35 @@ class CompendiumModulesCommand extends Command
                ][$value];
     }
 
-    function generateId($input, $length = 16)
+    private function setEnergy(array $data, array &$moduleData): void
     {
-        // Create a raw binary sha256 hash and base64 encode it.
-        $hash_base64 = base64_encode(hash('sha256', $input, true));
-        // Replace non-urlsafe chars to make the string urlsafe.
-        $hash_urlsafe = strtr($hash_base64, '+/', '-_');
-        // Trim base64 padding characters from the end.
-        $hash_urlsafe = rtrim($hash_urlsafe, '=');
+        static $rows = [
+            0 => 'tour',
+            1 => 'minute',
+            2 => 'supplementaire',
+        ];
+        $parts = explode(' / ', $data['duration']);
 
-        // Shorten the string before returning.
-        return substr($hash_urlsafe, 0, $length);
+        foreach ($parts as $index => $label) {
+            $label = $this->fixEnergyLabel($label);
+
+            if (2 === $index) {
+                $moduleData['system']['energie'][$rows[$index]] = $data['energy'];
+            } else {
+                $moduleData['system']['energie'][$rows[$index]] = [
+                    'value' => $data['energy'],
+                    'label' => $label,
+                ];
+            }
+        }
+    }
+
+    private function fixEnergyLabel(string $label): string
+    {
+        if (!str_starts_with($label, '1 ') && str_ends_with($label, ' tour')) {
+            $label .= 's';
+        }
+
+        return $label;
     }
 }
