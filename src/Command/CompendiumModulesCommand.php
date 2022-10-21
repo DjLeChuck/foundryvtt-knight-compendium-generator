@@ -25,14 +25,6 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
 
         foreach ($this->api->get('module') as $data) {
             $apiData = $this->api->get('module/'.$data['id']);
-
-            // @todo TMP - À retirer quand les catégories Prestige seront ajoutées
-            try {
-                $this->getCategory($apiData['category']['name']);
-            } catch (\Throwable) {
-                continue;
-            }
-
             $slotData = current($apiData['slots']);
             $nbLevels = \count($apiData['levels']);
             $moduleData = [
@@ -104,6 +96,18 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
             'Distance' => 'distance',
             'Défense' => 'defense',
             'Déplacement' => 'deplacement',
+            'Prestige Aigle' => 'aigle',
+            'Prestige Cerf' => 'cerf',
+            'Prestige Cheval' => 'cheval',
+            'Prestige Corbeau' => 'corbeau',
+            'Prestige Dragon' => 'dragon',
+            'Prestige Faucon' => 'faucon',
+            'Prestige Lion' => 'lion',
+            'Prestige Loup' => 'loup',
+            'Prestige Ours' => 'ours',
+            'Prestige Sanglier' => 'sanglier',
+            'Prestige Serpent' => 'serpent',
+            'Prestige Taureau' => 'taureau',
             'Tactique' => 'tactique',
             'Utilitaire' => 'utilitaire',
             'Visée' => 'visée',
