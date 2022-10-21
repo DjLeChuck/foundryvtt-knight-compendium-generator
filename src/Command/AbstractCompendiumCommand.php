@@ -6,7 +6,12 @@ namespace App\Command;
 
 use App\Api;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Finder\Finder;
+use Symfony\Component\Serializer\Encoder\JsonEncode;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\String\Inflector\EnglishInflector;
 
 abstract class AbstractCompendiumCommand extends Command
 {
@@ -21,9 +26,72 @@ abstract class AbstractCompendiumCommand extends Command
         parent::__construct();
     }
 
+    abstract protected function getType(): string;
+
+    protected function getPluralizedType(): string
+    {
+        $inflector = new EnglishInflector();
+
+        return current($inflector->pluralize($this->getType()));
+    }
+
+    protected function getList(): array
+    {
+        return $this->api->get($this->getType());
+    }
+
+    protected function getItem(int $id): array
+    {
+        return $this->api->get(sprintf('%s/%u', $this->getType(), $id));
+    }
+
+    protected function serializeData(array $data): string
+    {
+        return $this->serializer->serialize(
+            $data,
+            JsonEncoder::FORMAT,
+            [JsonEncode::OPTIONS => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES]
+        );
+    }
+
+    protected function dumpCompendium(array $dataset): void
+    {
+        $filesystem = new Filesystem();
+        $filesystem->dumpFile(
+            sprintf('var/%s.db', $this->getPluralizedType()),
+            implode(PHP_EOL, $dataset)
+        );
+    }
+
+    protected function getBaseData(): array
+    {
+        return include(sprintf('var/data/%s_tpl.php', $this->getType()));
+    }
+
+    protected function getImg(string $slug): ?string
+    {
+        static $existings = null;
+
+        if (null === $existings) {
+            $existings = [];
+            $finder = new Finder();
+
+            foreach ($finder->files()->in(sprintf('var/files/%s', $this->getPluralizedType())) as $file) {
+                $existings[] = $file->getFilename();
+            }
+        }
+
+        if (\in_array($slug.'.png', $existings, true)) {
+            return sprintf('systems/knight/assets/%s/%s.png', $this->getPluralizedType(), $slug);
+        }
+
+        return null;
+    }
+
     protected function cleanDescription(string $value): string
     {
-        $value = preg_replace('`\[(.*)]\([a-zA-Z0-9/-]*\)`', '$1', $value);
+        $value = preg_replace('`\[(.*)]\(.*\)`', '$1', $value);
+        $value = preg_replace('`_(.*)_`', '<em>$1</em>', $value);
 
         return str_replace("\r\n", '<br />', $value);
     }

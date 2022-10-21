@@ -7,9 +7,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 #[AsCommand(
     name: 'app:compendium:armours',
@@ -22,123 +19,26 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         $io = new SymfonyStyle($input, $output);
         $armours = [];
 
-        foreach ($this->api->get('armour') as $data) {
-            $apiData = $this->api->get('armour/'.$data['id']);
-
-            $armourData = [
-                '_id'    => $this->generateId($apiData['name']),
-                'name'   => $apiData['name'],
-                'type'   => 'armure',
-                'img'    => 'systems/knight/assets/armours/'.$apiData['slug'].'.png',
-                'system' => [
-                    'description'  => $this->getArmourDescription($apiData),
-                    'generation'   => $apiData['generation'],
-                    'armure'       => [
-                        'value' => $apiData['armour_points'],
-                        'base'  => $apiData['armour_points'],
-                    ],
-                    'champDeForce' => [
-                        'value' => $apiData['force_field'],
-                        'base'  => $apiData['force_field'],
-                    ],
-                    'energie'      => [
-                        'value' => $apiData['energy_points'],
-                        'base'  => $apiData['energy_points'],
-                    ],
-                    'slots'        => [
-                        'tete'        => [
-                            'value' => $apiData['slot_head'],
-                        ],
-                        'brasGauche'  => [
-                            'value' => $apiData['slot_left_arm'],
-                        ],
-                        'brasDroit'   => [
-                            'value' => $apiData['slot_right_arm'],
-                        ],
-                        'torse'       => [
-                            'value' => $apiData['slot_torso'],
-                        ],
-                        'jambeGauche' => [
-                            'value' => $apiData['slot_left_leg'],
-                        ],
-                        'jambeDroite' => [
-                            'value' => $apiData['slot_right_leg'],
-                        ],
-                    ],
-                    'overdrives'   => [
-                        'chair'   => [
-                            'liste' => [
-                                'deplacement' => [
-                                    'value' => 0,
-                                ],
-                                'force'       => [
-                                    'value' => 0,
-                                ],
-                                'endurance'   => [
-                                    'value' => 0,
-                                ],
-                            ],
-                        ],
-                        'bete'    => [
-                            'liste' => [
-                                'hargne'   => [
-                                    'value' => 0,
-                                ],
-                                'combat'   => [
-                                    'value' => 0,
-                                ],
-                                'instinct' => [
-                                    'value' => 0,
-                                ],
-                            ],
-                        ],
-                        'machine' => [
-                            'liste' => [
-                                'tir'       => [
-                                    'value' => 0,
-                                ],
-                                'savoir'    => [
-                                    'value' => 0,
-                                ],
-                                'technique' => [
-                                    'value' => 0,
-                                ],
-                            ],
-                        ],
-                        'dame'    => [
-                            'liste' => [
-                                'aura'      => [
-                                    'value' => 0,
-                                ],
-                                'parole'    => [
-                                    'value' => 0,
-                                ],
-                                'sangFroid' => [
-                                    'value' => 0,
-                                ],
-                            ],
-                        ],
-                        'masque'  => [
-                            'liste' => [
-                                'discretion' => [
-                                    'value' => 0,
-                                ],
-                                'dexterite'  => [
-                                    'value' => 0,
-                                ],
-                                'perception' => [
-                                    'value' => 0,
-                                ],
-                            ],
-                        ],
-                    ],
-                    'evolutions'   => [
-                        'paliers'  => \count($apiData['evolutions']),
-                        'aAcheter' => ['value' => true],
-                        'liste'    => [],
-                    ],
-                ],
-            ];
+        foreach ($this->getList() as $data) {
+            $apiData = $this->getItem($data['id']);
+            $armourData = $this->getBaseData();
+            $armourData['_id'] = $this->generateId($apiData['name']);
+            $armourData['name'] = $apiData['name'];
+            $armourData['img'] = $this->getImg($apiData['slug']) ?? $armourData['img'];
+            $armourData['system']['description'] = $this->getArmourDescription($apiData);
+            $armourData['system']['generation'] = $apiData['generation'];
+            $armourData['system']['armure']['value'] = $apiData['armour_points'];
+            $armourData['system']['armure']['base'] = $apiData['armour_points'];
+            $armourData['system']['champDeForce']['base'] = $apiData['force_field'];
+            $armourData['system']['energie']['value'] = $apiData['energy_points'];
+            $armourData['system']['energie']['base'] = $apiData['energy_points'];
+            $armourData['system']['slots']['tete']['value'] = $apiData['slot_head'];
+            $armourData['system']['slots']['brasGauche']['value'] = $apiData['slot_left_arm'];
+            $armourData['system']['slots']['brasDroit']['value'] = $apiData['slot_right_arm'];
+            $armourData['system']['slots']['torse']['value'] = $apiData['slot_torso'];
+            $armourData['system']['slots']['jambeGauche']['value'] = $apiData['slot_left_leg'];
+            $armourData['system']['slots']['jambeDroite']['value'] = $apiData['slot_right_leg'];
+            $armourData['system']['evolutions']['paliers'] = \count($apiData['evolutions']);
 
             foreach ($apiData['overdrives'] as $overdrive) {
                 $this->addOverdrive($overdrive['characteristic'], $armourData);
@@ -148,16 +48,11 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 $this->addEvolution($evolution, $armourData);
             }
 
-            $armours[] = $this->serializer->serialize(
-                $armourData,
-                JsonEncoder::FORMAT,
-                [JsonEncode::OPTIONS => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES]
-            );
+            $armours[] = $this->serializeData($armourData);
         }
 
         try {
-            $filesystem = new Filesystem();
-            $filesystem->dumpFile('var/armours.db', implode(PHP_EOL, $armours));
+            $this->dumpCompendium($armours);
 
             $io->success('Compendium généré.');
         } catch (\Throwable $e) {
@@ -165,6 +60,11 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         }
 
         return Command::SUCCESS;
+    }
+
+    protected function getType(): string
+    {
+        return 'armour';
     }
 
     private function getArmourDescription(array $data): string
@@ -176,7 +76,7 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         ];
 
         return implode(
-            PHP_EOL,
+            '<br /><br />',
             array_map(fn($value) => $this->cleanDescription($value), $parts)
         );
     }
@@ -255,7 +155,9 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
     {
         $armourData['system']['evolutions']['liste'][] = [
             'value'       => $evolution['unlock_at'],
-            'description' => $evolution['description'],
+            'description' => $this->cleanDescription($evolution['description']),
+            'capacites'   => [],
+            'special'     => [],
         ];
     }
 }

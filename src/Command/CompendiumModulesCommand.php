@@ -115,24 +115,9 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         };
     }
 
-    private function getImg(string $slug): string
+    protected function getType(): string
     {
-        static $existings = null;
-
-        if (null === $existings) {
-            $existings = [];
-            $finder = new Finder();
-
-            foreach ($finder->files()->in('var/files/modules') as $file) {
-                $existings[] = $file->getFilename();
-            }
-        }
-
-        if (\in_array($slug.'.png', $existings, true)) {
-            return 'systems/knight/assets/modules/'.$slug.'.png';
-        }
-
-        return 'systems/knight/assets/icons/module.svg';
+        return 'module';
     }
 
     private function getActivation(?string $value): ?string

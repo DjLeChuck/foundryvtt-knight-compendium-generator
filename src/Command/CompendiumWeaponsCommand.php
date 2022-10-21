@@ -32,7 +32,7 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
                 'img'    => $this->getImg($apiData['slug']),
                 'system' => [
                     'description' => $this->cleanDescription($apiData['description']),
-                    'type'        => $this->getType($apiData['category']['name']),
+                    'type'        => $this->getWeaponType($apiData['category']['name']),
                     'prix'        => $apiData['cost'],
                 ],
             ];
@@ -77,32 +77,17 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
         return Command::SUCCESS;
     }
 
-    private function getType(string $value): string
+    protected function getType(): string
+    {
+        return 'weapon';
+    }
+
+    private function getWeaponType(string $value): string
     {
         return match ($value) {
             'Arme à distance' => 'distance',
             'Arme de contact' => 'contact',
             default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
         };
-    }
-
-    private function getImg(string $slug): string
-    {
-        static $existings = null;
-
-        if (null === $existings) {
-            $existings = [];
-            $finder = new Finder();
-
-            foreach ($finder->files()->in('var/files/weapons') as $file) {
-                $existings[] = $file->getFilename();
-            }
-        }
-
-        if (\in_array($slug.'.png', $existings, true)) {
-            return 'systems/knight/assets/weapons/'.$slug.'.png';
-        }
-
-        return 'systems/knight/assets/icons/arme.svg';
     }
 }
