@@ -9,6 +9,15 @@ use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class MediaGrabber
 {
+    public const TYPE_ARMOUR = 'armours';
+    public const TYPE_MODULE = 'modules';
+    public const TYPE_WEAPON = 'weapons';
+
+    private static array $paths = [
+        self::TYPE_ARMOUR => 'armour_logo/anathema',
+        self::TYPE_MODULE => 'module',
+        self::TYPE_WEAPON => 'weapon',
+    ];
     private HttpClientInterface $client;
 
     public function __construct(HttpClientInterface $knightMediaClient)
@@ -16,16 +25,15 @@ class MediaGrabber
         $this->client = $knightMediaClient;
     }
 
-    public function grab(string $name, string $type, string $path): ?string
+    public function grab(string $type, string $slug): void
     {
-        $response = $this->client->request('GET', $path);
+        $filename = sprintf('%s.png', $slug);
+        $response = $this->client->request('GET', sprintf('%s/%s', self::$paths[$type], $filename));
         if (200 !== $response->getStatusCode()) {
-            return null;
+            return;
         }
 
         $filesystem = new Filesystem();
-        $filesystem->dumpFile('var/files/'.$type.'/'.$name, $response->getContent());
-
-        return 'var/files/'.$name;
+        $filesystem->dumpFile(sprintf('var/files/%s/%s', $type, $filename), $response->getContent());
     }
 }
