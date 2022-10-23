@@ -15,6 +15,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 class CompendiumArmoursCommand extends AbstractCompendiumCommand
 {
     private array $abilities;
+    private array $specialties;
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
@@ -22,6 +23,7 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         $items = [];
 
         $this->loadAbilities();
+        $this->loadSpecialties();
 
         foreach ($this->getList() as $data) {
             $apiData = $this->getItem($data['id']);
@@ -53,6 +55,10 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 foreach ($apiData['abilities'] as $ability) {
                     $this->addAbility($ability, $itemData);
                 }
+            }
+
+            foreach ($apiData['abilities'] as $special) {
+                $this->addSpecial($special, $itemData);
             }
 
             $this->addEvolutions($apiData['evolutions'], $itemData);
@@ -186,6 +192,10 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 $data['capacites'][$abilityName] = $abilityData['evolutions'];
             }
 
+            foreach ($itemData['system']['special']['selected'] as $abilityName => $abilityData) {
+                $data['special'][$abilityName] = $abilityData['evolutions'];
+            }
+
             $itemData['system']['evolutions']['liste'][(string) ++$i] = $data;
         }
     }
@@ -194,6 +204,16 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
     {
         $this->abilities = json_decode(
             file_get_contents('var/data/armour_abilities.json'),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+    }
+
+    private function loadSpecialties(): void
+    {
+        $this->specialties = json_decode(
+            file_get_contents('var/data/armour_specialties.json'),
             true,
             512,
             JSON_THROW_ON_ERROR
@@ -220,6 +240,26 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         throw new \InvalidArgumentException(sprintf('Capacité "%s" non traitable', $abilityName));
     }
 
+    private function addSpecial(array $special, array &$itemData): void
+    {
+        $specialName = $this->fixSpecialName($special['name']);
+
+        // Si le nom est null, on ignore
+        if (null === $specialName) {
+            return;
+        }
+
+        foreach ($this->specialties as $abilityKey => $abilityData) {
+            if ($specialName === $abilityData['label']) {
+                $itemData['system']['special']['selected'][$abilityKey] = $abilityData;
+
+                return;
+            }
+        }
+
+        throw new \InvalidArgumentException(sprintf('Spécialité "%s" non traitable', $specialName));
+    }
+
     private function fixAbilityName(mixed $name): ?string
     {
         return match ($name) {
@@ -231,6 +271,14 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
             'Contrecoups' => null, // Spécial
             'Imprégnation' => null, // Spécial
             default => $name,
+        };
+    }
+
+    private function fixSpecialName(mixed $name): ?string
+    {
+        return match ($name) {
+            'Contrecoups', 'Il n\'y a plus d\'espoir', 'Imprégnation', 'Lente et lourde' => $name,
+            default => null,
         };
     }
 }
