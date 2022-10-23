@@ -14,10 +14,14 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 )]
 class CompendiumArmoursCommand extends AbstractCompendiumCommand
 {
+    private array $abilities;
+
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
         $items = [];
+
+        $this->loadAbilities();
 
         foreach ($this->getList() as $data) {
             $apiData = $this->getItem($data['id']);
@@ -44,9 +48,14 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 $this->addOverdrive($overdrive['characteristic'], $itemData);
             }
 
-            foreach ($apiData['evolutions'] as $evolution) {
-                $this->addEvolution($evolution, $itemData);
+            // Pas d'évolution pour la méta-armure Druid
+            if ('druid' !== $apiData['slug']) {
+                foreach ($apiData['abilities'] as $ability) {
+                    $this->addAbility($ability, $itemData);
+                }
             }
+
+            $this->addEvolutions($apiData['evolutions'], $itemData);
 
             $items[$this->getArmourPack($apiData['slug'])][] = $this->serializeData($itemData);
         }
@@ -161,13 +170,67 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         ++$itemData['system']['overdrives'][$aspect]['liste'][$name]['value'];
     }
 
-    private function addEvolution(array $evolution, array &$itemData): void
+    private function addEvolutions(array $evolutions, array &$itemData): void
     {
-        $itemData['system']['evolutions']['liste'][] = [
-            'value'       => $evolution['unlock_at'],
-            'description' => $this->cleanDescription($evolution['description']),
-            'capacites'   => [],
-            'special'     => [],
-        ];
+        $i = 0;
+
+        foreach ($evolutions as $evolution) {
+            $data = [
+                'value'       => $evolution['unlock_at'],
+                'description' => $this->cleanDescription($evolution['description']),
+                'capacites'   => [],
+                'special'     => [],
+            ];
+
+            foreach ($itemData['system']['capacites']['selected'] as $abilityName => $abilityData) {
+                $data['capacites'][$abilityName] = $abilityData['evolutions'];
+            }
+
+            $itemData['system']['evolutions']['liste'][(string) ++$i] = $data;
+        }
+    }
+
+    private function loadAbilities(): void
+    {
+        $this->abilities = json_decode(
+            file_get_contents('var/data/armour_abilities.json'),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
+    }
+
+    private function addAbility(array $ability, array &$itemData): void
+    {
+        $abilityName = $this->fixAbilityName($ability['name']);
+
+        // Si le nom est null, on ignore
+        if (null === $abilityName) {
+            return;
+        }
+
+        foreach ($this->abilities as $abilityKey => $abilityData) {
+            if ($abilityName === $abilityData['label']) {
+                $itemData['system']['capacites']['selected'][$abilityKey] = $abilityData;
+
+                return;
+            }
+        }
+
+        throw new \InvalidArgumentException(sprintf('Capacité "%s" non traitable', $abilityName));
+    }
+
+    private function fixAbilityName(mixed $name): ?string
+    {
+        return match ($name) {
+            'Fusil de précision polymorphe polycalibre Longbow' => 'Fusil de précision Longbow',
+            'Mode Companion' => 'Mode Companions',
+            'Armure sarcophage' => 'Armure Sarcophage',
+            'Plus fort que la chair' => null, // Spécial
+            'Il n\'y a plus d\'espoir' => null,
+            'Contrecoups' => null, // Spécial
+            'Imprégnation' => null, // Spécial
+            default => $name,
+        };
     }
 }
