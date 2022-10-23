@@ -1,0 +1,49 @@
+{
+  "name": "",
+  "type": "arme",
+  "img": "systems/knight/assets/icons/arme.svg",
+  "system": {
+    "description": "",
+    "rarete": "standard",
+    "type": "contact",
+    "portee": "contact",
+    "prix": 0,
+    "listes": {},
+    "tourelle": {
+      "has": false,
+      "attaque": {
+        "dice": 0,
+        "fixe": 0
+      }
+    },
+    "degats": {
+      "dice": 0,
+      "fixe": 0
+    },
+    "violence": {
+      "dice": 0,
+      "fixe": 0
+    },
+    "effets": {
+      "liste": [ ],
+      "raw": [ ],
+      "custom": [ ]
+    },
+    "distance": {
+      "liste": [ ],
+      "raw": [ ],
+      "custom": [ ]
+    },
+    "ornementales": {
+      "liste": [ ],
+      "raw": [ ],
+      "custom": [ ]
+    },
+    "structurelles": {
+      "liste": [ ],
+      "raw": [ ],
+      "custom": [ ]
+    }
+  },
+  "effects": [ ]
+}

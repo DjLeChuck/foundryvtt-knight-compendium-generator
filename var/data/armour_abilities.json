@@ -1,0 +1,2712 @@
+{
+  "sarcophage": {
+    "label": "Armure Sarcophage",
+    "description": "<p style=\"text-align:justify\">Lorsqu’un chevalier meurt, il peut décider de continuer l’aventure en insérant sa conscience dans une armure Necromancer. Il perd alors son ancienne méta-armure, ses capacités, et tous ses overdrives. Il peut conserver ses armes et ses modules, même ceux de prestige.</p><p style=text-align:justify;>En contrepartie de la perte de sa méta-armure et en fonction des PG accumulés, le chevalier reçoit un certain nombre de modules comme indiqué ci-dessous. Il ne les reçoit que lorsqu’il investit la Necromancer pour la première fois et il peut choisir ceux qu’il désire (overdrives, modules de combat, etc.) dans le cadre de la disponibilité indiquée, peu importe leur coût en PG, et peut bien entendu faire évoluer un module plutôt qu’en acheter un nouveau.</p>",
+    "bonus": {
+      "paliers": 7,
+      "liste": {
+        "b0": {
+          "pg": {
+            "min": 0,
+            "max": 49
+          },
+          "offert": "Un module standard à choisir dans la liste des modules."
+        },
+        "b1": {
+          "pg": {
+            "min": 50,
+            "max": 99
+          },
+          "offert": "Deux modules standards à choisir dans la liste des modules."
+        },
+        "b2": {
+          "pg": {
+            "min": 100,
+            "max": 149
+          },
+          "offert": "Deux modules standards et un module avancé à choisir dans la liste des modules."
+        },
+        "b3": {
+          "pg": {
+            "min": 150,
+            "max": 199
+          },
+          "offert": "Trois modules standards et deux modules avancés à choisir dans la liste des modules."
+        },
+        "b4": {
+          "pg": {
+            "min": 200,
+            "max": 249
+          },
+          "offert": "Trois modules standards, trois modules avancés et un module rare à choisir dans la liste des modules."
+        },
+        "b5": {
+          "pg": {
+            "min": 250,
+            "max": 299
+          },
+          "offert": "Trois modules standards, trois modules avancés et deux modules rares à choisir dans la liste des modules."
+        },
+        "b6": {
+          "pg": {
+            "min": 300
+          },
+          "offert": "Trois modules standards, trois modules avancés et trois modules rares à choisir dans la liste des modules."
+        }
+      }
+    },
+    "textarea": {
+      "b0": 50,
+      "b1": 50,
+      "b2": 50,
+      "b3": 50,
+      "b4": 50,
+      "b5": 50,
+      "b6": 50
+    },
+    "key": "sarcophage",
+    "softlock": true
+  },
+  "shrine": {
+    "label": "Champ de Force Shrine",
+    "description": "<p style=\"text-align:justify\">La méta-armure peut déployer autour d’elle un champ de force très puissant nommé Shrine qui prend la forme d’un dôme bleuté de 6 mètres de diamètre, pouvant abriter d’autres personnes et/ou méta-armures.</p>",
+    "activation": "aucune",
+    "duree": "1 tour",
+    "portee": "Personnelle / Moyenne",
+    "energie": {
+      "personnel": 1,
+      "distance": 2,
+      "acces6tours": false,
+      "personnel6tours": 5,
+      "distance6tours": 10
+    },
+    "champdeforce": 6,
+    "requis": {
+      "force": 5,
+      "chair": 10
+    },
+    "textarea": {
+      "duree": "50",
+      "portee": "50"
+    },
+    "evolutions": {
+      "activation": "aucun",
+      "duree": "1 tour",
+      "portee": "Personnelle / Moyenne",
+      "energie": {
+        "personnel": 1,
+        "distance": 2,
+        "acces6tours": false,
+        "personnel6tours": 5,
+        "distance6tours": 10
+      },
+      "champdeforce": 6,
+      "requis": {
+        "force": 5,
+        "chair": 10
+      },
+      "textarea": {
+        "duree": "50",
+        "portee": "50"
+      }
+    },
+    "key": "shrine",
+    "softlock": true
+  },
+  "longbow": {
+    "label": "Fusil de précision Longbow",
+    "description": "<p style=\"text-align:justify\">La méta-armure Ranger et le fusil Longbow ne sont qu’une seule machinerie qui concilie la puissance et la précision d’un fusil anti-matériel avec la polyvalence nécessaire à celui qui évolue seul dans les territoires de l’Anathème. Le fusil Longbow est sans doute l’arme principale d’un chevalier en armure Ranger. Le fusil de précision Longbow peut être racké. Il compte dans la limite des armes contenues dans le rack de la méta-armure. De plus, au même titre qu’une autre arme de tir, il peut recevoir des améliorations d’armes, mais dans la limite de deux (et seulement deux) maximum, avec les mêmes restrictions que les armes possédant l’effet lourd.</p>",
+    "degats": {
+      "energie": 1,
+      "min": 3,
+      "max": 9
+    },
+    "violence": {
+      "energie": 1,
+      "min": 1,
+      "max": 7
+    },
+    "portee": {
+      "energie": 1,
+      "min": "moyenne",
+      "max": "lointaine"
+    },
+    "effets": {
+      "base": {
+        "liste": [],
+        "raw": [
+          "assistanceattaque",
+          "deuxmains",
+          "lourd"
+        ],
+        "custom": []
+      },
+      "liste1": {
+        "energie": 2,
+        "liste": [],
+        "raw": [
+          "choc 1",
+          "degatscontinus 3",
+          "designation",
+          "percearmure 40",
+          "silencieux",
+          "ultraviolence"
+        ],
+        "custom": []
+      },
+      "liste2": {
+        "energie": 3,
+        "liste": [],
+        "raw": [
+          "antivehicule",
+          "artillerie",
+          "dispersion 3",
+          "lumiere 4",
+          "penetrant 6",
+          "percearmure 60"
+        ],
+        "custom": []
+      },
+      "liste3": {
+        "label": "",
+        "acces": false,
+        "energie": 6,
+        "liste": [],
+        "raw": [
+          "antianatheme",
+          "demoralisant",
+          "enchaine",
+          "fureur",
+          "ignorearmure",
+          "penetrant 10"
+        ],
+        "custom": []
+      }
+    },
+    "evolutions": {
+      "degats": {
+        "energie": 1,
+        "min": 3,
+        "max": 9
+      },
+      "violence": {
+        "energie": 1,
+        "min": 1,
+        "max": 7
+      },
+      "portee": {
+        "energie": 1,
+        "min": "moyenne",
+        "max": "lointaine"
+      },
+      "effets": {
+        "base": {
+          "liste": [],
+          "raw": [
+            "assistanceattaque",
+            "deuxmains",
+            "lourd"
+          ],
+          "custom": []
+        },
+        "liste1": {
+          "energie": 2,
+          "liste": [],
+          "raw": [
+            "choc 1",
+            "degatscontinus 3",
+            "designation",
+            "percearmure 40",
+            "silencieux",
+            "ultraviolence"
+          ],
+          "custom": []
+        },
+        "liste2": {
+          "energie": 3,
+          "liste": [],
+          "raw": [
+            "antivehicule",
+            "artillerie",
+            "dispersion 3",
+            "lumiere 4",
+            "penetrant 6",
+            "percearmure 60"
+          ],
+          "custom": []
+        },
+        "liste3": {
+          "label": "",
+          "acces": false,
+          "energie": 6,
+          "liste": [],
+          "raw": [
+            "antianatheme",
+            "demoralisant",
+            "enchaine",
+            "fureur",
+            "ignorearmure",
+            "penetrant 10"
+          ],
+          "custom": []
+        }
+      }
+    },
+    "key": "longbow",
+    "softlock": true
+  },
+  "ascension": {
+    "label": "Mode Ascension",
+    "description": "<p style=\"text-align:justify\">Le chevalier peut matérialiser son IA dans un corps nommé « Ascension ». Ce corps est une réplique exacte de la méta-armure du chevalier, avec ses modules, ses valeurs totales et actuelles, mais sans ses armes.</p><p style=text-align:justify;>Le chevalier peut matérialiser son IA en mode Ascension. Pour la matérialiser, il doit lui octroyer une partie de ses propres PE temporairement soustraits à son total. La valeur totale des PE du chevalier est abaissée de ce montant durant toute la durée de la matérialisation de l’IA. L’IA en mode Ascension possède la même fiche de personnage que le chevalier (mêmes aspects, caractéristiques, OD, valeurs dérivées, score totaux, CdF, etc.), mais elle ne dispose pas de score de santé et est détruite lorsque ses PA tombent à 0. Elle peut bien entendu être réparée avant que ses PA n’atteignent 0.</p><p style=text-align:justify;>Elle possède les mêmes modules que le chevalier (qui peuvent être des modules d’armement), le même nombre de nods actuels et de munitions, mais pas ses armes, ni ses grenades intelligentes. L’intelligence ainsi incorporée dans un corps agit de manière indépendante, sans aucune limite de portée, et obéit aux ordres du chevalier si elle les considère justifiés. Elle peut refuser un ordre qui lui semblerait injuste ou hors de propos. Ce n’est pas le MJ qui joue cette IA, mais le PJ qui doit tenter de la jouer de la manière la plus appropriée qui soit, en fonction de la personnalité de l’IA.</p>",
+    "duree": "Une scène ou une phase de conflit, peut être prolongé en conservant exactement la même valeur de PE octroyée.",
+    "activation": "tour6Sec",
+    "portee": "contact",
+    "impregnation": 3,
+    "sansarmure": {
+      "acces": false
+    },
+    "special": {
+      "atlas": "impregnation"
+    },
+    "energie": {
+      "min": 10,
+      "max": 50,
+      "limite": 0
+    },
+    "textarea": {
+      "duree": 75
+    },
+    "evolutions": {
+      "duree": "Une scène ou une phase de conflit, peut être prolongé en conservant exactement la même valeur de PE octroyée.",
+      "activation": "Tour6Sec",
+      "portee": "contact",
+      "impregnation": 3,
+      "sansarmure": {
+        "acces": false,
+        "label": ""
+      },
+      "special": {
+        "atlas": "impregnation"
+      },
+      "energie": {
+        "min": 10,
+        "max": 50,
+        "limite": 0
+      },
+      "textarea": {
+        "duree": 75
+      }
+    },
+    "key": "ascension",
+    "softlock": true
+  },
+  "borealis": {
+    "label": "Mode Borealis",
+    "description": "<p style=\"text-align:justify\">La méta-armure Wizard est constellée d'un réseau de canaux où circule le plasma en fusion. En activant le mode Borealis, le porteur diffuse depuis des évents une grande quantité de volutes de plasma lumineux. Grâce à son puissant champ de force et à des gants conçus pour, le porteur de l'armure peut manipuler ces volutes dans l'air autour de lui, comme s'il pratiquait une forme de télékinésie, avec une exactitude telle qu'il peut recouvrir les armes alliées et créer, devant les canons des armes à feu, une nappe de plasma qui baigne les munitions tirées d'une lumière éclatante. Une torture pour les abominations ténébreuses. Il existe trois effets indépendants les uns des autres.</p>",
+    "support": {
+      "description": "Un allié à portée courte ou moins (ou le chevalier lui-même) gagne l’effet anti-Anathème sur l’ensemble des armes qu’il utilise actuellement (tourelles d’épaule et pods inclus, mais pas les tourelles automatisées). Plusieurs alliés (ou le chevalier lui-même) peuvent bénéficier de cet effet pour un coût de 2 PE supplémentaires par allié.",
+      "energie": {
+        "base": 6,
+        "allie": 2
+      },
+      "activation": "tour",
+      "duree": "Une phase de conflit ou une scène"
+    },
+    "offensif": {
+      "description": "Les volutes de plasma peuvent bien évidemment être manipulées pour infliger des dégâts aux cibles adverses. Dans ce cas, il s’agit d’une action de combat de type combat ou tir en fonction de la portée.",
+      "energie": 2,
+      "activation": "combat",
+      "duree": "Instantanée",
+      "degats": {
+        "dice": 4,
+        "fixe": 4
+      },
+      "violence": {
+        "dice": 4,
+        "fixe": 0
+      },
+      "portee": "courte",
+      "effets": {
+        "liste": [],
+        "raw": [
+          "antianatheme",
+          "degatscontinus 3"
+        ],
+        "custom": []
+      }
+    },
+    "utilitaire": {
+      "description": "Enfin, le plasma peut être manipulé pour servir d’outil comme un globe de plasma lumineux, une clé de plasma destinée à faire fondre une serrure ou encore une simple nappe déposée pour créer un départ de feu. La matière, liquide et capable de brûler à peu près n’importe quoi, peut être manipulée facilement pour créer des formes simples. Au PJ d’improviser et au MJ d’accepter ou non les idées proposées.",
+      "energie": 6,
+      "activation": "tour",
+      "duree": "6 tours ou 1 minute"
+    },
+    "evolutions": {
+      "support": {
+        "description": "Un allié à portée courte ou moins (ou le chevalier lui-même) gagne l’effet anti-Anathème sur l’ensemble des armes qu’il utilise actuellement (tourelles d’épaule et pods inclus, mais pas les tourelles automatisées). Plusieurs alliés (ou le chevalier lui-même) peuvent bénéficier de cet effet pour un coût de 2 PE supplémentaires par allié.",
+        "energie": {
+          "base": 6,
+          "allie": 2
+        },
+        "activation": "tour",
+        "duree": "Une phase de conflit ou une scène"
+      },
+      "offensif": {
+        "description": "Les volutes de plasma peuvent bien évidemment être manipulées pour infliger des dégâts aux cibles adverses. Dans ce cas, il s’agit d’une action de combat de type combat ou tir en fonction de la portée.",
+        "energie": 2,
+        "activation": "combat",
+        "duree": "Instantanée",
+        "degats": {
+          "dice": 4,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 4,
+          "fixe": 0
+        },
+        "portee": "courte",
+        "effets": {
+          "liste": [],
+          "raw": [
+            "antianatheme",
+            "degatscontinus 3"
+          ],
+          "custom": []
+        }
+      },
+      "utilitaire": {
+        "description": "Enfin, le plasma peut être manipulé pour servir d’outil comme un globe de plasma lumineux, une clé de plasma destinée à faire fondre une serrure ou encore une simple nappe déposée pour créer un départ de feu. La matière, liquide et capable de brûler à peu près n’importe quoi, peut être manipulée facilement pour créer des formes simples. Au PJ d’improviser et au MJ d’accepter ou non les idées proposées.",
+        "energie": 6,
+        "activation": "tour",
+        "duree": "6 tours ou 1 minute"
+      },
+      "textarea": {
+        "descriptionESupport": 120,
+        "descriptionEUtilitaire": 140,
+        "descriptionEOffensif": 85,
+        "dureeESupport": 50,
+        "dureeEUtilitaire": 50,
+        "dureeEOffensif": 50
+      }
+    },
+    "textarea": {
+      "descriptionSupport": 120,
+      "descriptionUtilitaire": 140,
+      "descriptionOffensif": 85,
+      "descriptionESupport": 120,
+      "descriptionEUtilitaire": 140,
+      "descriptionEOffensif": 85,
+      "dureeSupport": 50,
+      "dureeUtilitaire": 50,
+      "dureeOffensif": 50,
+      "dureeESupport": 50,
+      "dureeEUtilitaire": 50,
+      "dureeEOffensif": 50
+    },
+    "key": "borealis",
+    "softlock": true
+  },
+  "changeling": {
+    "label": "Mode Changeling",
+    "description": "<p style=\"text-align:justify\">Grâce aux nanomachines, la méta-armure peut se faire passer pour une créature, une personne, un être différent. Cette transformation par les nanomachines peut être étendue jusqu’à 3 mètres de rayon autour de l’armure pour générer des « faux êtres » de nanomachines supplémentaires. Le chevalier peut ainsi faire croire qu’il est accompagné ou augmenter la taille de sa fausse apparence pour se faire passer pour un être plus grand.</p><p style=text-align:justify;><b>Attention :</b> Les nanomachines permettant ces transformations sont toujours en mouvement et créent une sorte d’enveloppe molle sur la méta-armure. Le personnage transformé peut prendre ou ramasser des choses, mais si quelqu’un entre en contact avec lui, il lui est aisé de repérer la supercherie.</p>",
+    "activation": "tour6Sec",
+    "duree": "Une scène, une phase ou une heure, peu importe la phase",
+    "portee": "3m de rayon",
+    "energie": {
+      "personnel": 6,
+      "etendue": 8,
+      "fauxEtre": {
+        "value": 3,
+        "max": 4
+      }
+    },
+    "desactivationexplosive": {
+      "label": "",
+      "acces": false,
+      "portee": "courte",
+      "degats": {
+        "dice": 3,
+        "fixe": 6
+      },
+      "violence": {
+        "dice": 3,
+        "fixe": 6
+      },
+      "effets": {
+        "liste": [],
+        "raw": [
+          "ignorearmure",
+          "ignorechampdeforce",
+          "dispersion 6",
+          "choc 1"
+        ],
+        "custom": []
+      }
+    },
+    "evolutions": {
+      "activation": "tour6Sec",
+      "duree": "Une scène, une phase ou une heure, peu importe la phase",
+      "portee": "3m de rayon",
+      "energie": {
+        "personnel": 6,
+        "etendue": 8,
+        "fauxEtre": {
+          "value": 3,
+          "max": 4
+        }
+      },
+      "desactivationexplosive": {
+        "label": "",
+        "acces": false,
+        "portee": "courte",
+        "degats": {
+          "dice": 3,
+          "fixe": 6
+        },
+        "violence": {
+          "dice": 3,
+          "fixe": 6
+        },
+        "effets": {
+          "liste": [],
+          "raw": [
+            "ignorearmure",
+            "ignorechampdeforce",
+            "dispersion 6",
+            "choc 1"
+          ],
+          "custom": []
+        }
+      },
+      "textarea": {
+        "duree": 50,
+        "portee": 50
+      }
+    },
+    "textarea": {
+      "duree": 50,
+      "portee": 50
+    },
+    "key": "changeling",
+    "softlock": true
+  },
+  "companions": {
+    "label": "Mode Companions",
+    "description": "<p style=\"text-align:justify\">La méta-armure Druid est capable de générer trois types de compagnons différents. Un seul type peut être généré à la fois et uniquement de la manière dont il est présenté plus loin. Deux ou trois types de compagnons ne peuvent être créés en même temps lors d'une même scène ou d'une même phase de conflit, un seul type pouvant exister à la fois. Lorsque le chevalier génère un compagnon, il déploie des nanomachines depuis la paume de son gantelet, nanomachines qui se matérialisent en un ou plusieurs alliés robotiques.</p><p style=text-align:justify;>Chaque type de compagnon dure le temps d'une scène ou d'une phase de conflit. Pour prolonger la « vie » d'un type de compagnon lors de la scène ou de la phase de conflit suivante, le chevalier doit dépenser la moitié des PE qu'il dépenserait normalement. L'activation coûte 6 secondes, ou un tour complet. Désactiver un compagnon ne coûte ni PE, ni action.</p><p style=text-align:justify;>Si un chevalier souhaite changer de type de compagnon alors qu'un type est déjà présent, il doit de nouveau payer le coût normal en PE et utiliser l'activation standard du mod. Le compagnon présent tombe en scories de nanomachines alors qu'un autre se crée, ses PA et ses PE étant au maximum.</p><p style=text-align:justify;>Dans tous les cas, si les PA (ou la cohésion) du type de compagnon créé tombent à zéro, il est détruit. Un nouveau type de compagnon peut être créé pour un coût normal en énergie.</p><p style=text-align:justify;>L'effet <i>ignore armure</i> n'a aucun effet sur les PA du compagnon, les dégâts sont appliqués normalement. En outre, il ignore toutes les capacités de type <i>domination</i> et <i>peur X</i>.</p><p style=text-align:justify;>Les compagnons ne peuvent jamais s'éloigner du porteur de la méta-armure Druid d'une distance supérieure à la portée longue. Si un compagnon dépasse cette distance, il tombe en scories de nano-machines et est considéré comme détruit.</p><p style=text-align:justify;>Les compagnons agissent à leur <i>initiative</i>, le chevalier n'a besoin d'aucune action pour les faire agir.</p><p style=text-align:justify;>Enfin, les compagnons peuvent recevoir les bénéfices apportés par les nods et toutes les capacités appropriées. Leurs PE se rechargent de la même manière que ceux des chevaliers et ils peuvent récupérer des PA en étant réparés, grâce à des capacités ou des nods.</p><p style=text-align:justify;><b>Génération de compagnon</b></p><p style=text-align:justify;>Lorsque le chevalier crée un type de compagnon, il doit décider de lui octroyer un minimum de PE depuis son propre noyau d'énergie. Pour effectuer cela, il doit choisir de baisser temporairement son total de PE de 10, 20, 30, 40 ou 50 points. Ses PE actuels sont diminués du nombre de PE totaux sacrifiés. Attention, un chevalier ne peut pas sacrifier plus de PE de son total qu'il n'en possède dans son score actuel.</p><p style=text-align:justify;>Ces points sont sacrifiés tant que le type de compagnon est présent et forment le total de PE du compagnon ainsi que ses PE actuels. Pour utiliser ses modules, le type de compagnon devra dépenser ces PE.</p><p style=text-align:justify;>Lorsque le compagnon est détruit ou lorsqu'il disparaît, le chevalier récupère son total de PE et ses PE actuels sont augmentés à hauteur de ceux que possédait le compagnon à sa destruction.</p>",
+    "activation": "tour6Sec",
+    "duree": "Une phase de conflit ou une scène",
+    "energie": {
+      "base": 16,
+      "prolonger": 8
+    },
+    "textarea": {
+      "duree": 50,
+      "labor": 85,
+      "medic": 85,
+      "tech": 85,
+      "fighter": 85,
+      "recon": 85,
+      "crow": 52
+    },
+    "lion": {
+      "PG": 60,
+      "aspects": {
+        "chair": {
+          "value": 7,
+          "ae": 1
+        },
+        "bete": {
+          "value": 6,
+          "ae": 1
+        },
+        "machine": {
+          "value": 7,
+          "ae": 1
+        },
+        "dame": {
+          "value": 4,
+          "ae": 0
+        },
+        "masque": {
+          "value": 4,
+          "ae": 0
+        }
+      },
+      "champDeForce": {
+        "base": 10,
+        "bonus": [],
+        "malus": []
+      },
+      "defense": {
+        "base": 4,
+        "bonus": [],
+        "malus": []
+      },
+      "reaction": {
+        "base": 4,
+        "bonus": [],
+        "malus": []
+      },
+      "armure": {
+        "base": 60,
+        "bonus": [],
+        "malus": []
+      },
+      "energie": {
+        "base": 0,
+        "bonus": [],
+        "malus": []
+      },
+      "initiative": {
+        "value": 3,
+        "fixe": 2
+      },
+      "armes": {
+        "contact": {
+          "coups": {
+            "label": "Coups",
+            "portee": "contact",
+            "degats": {
+              "dice": 1,
+              "fixe": 0
+            },
+            "violence": {
+              "dice": 1,
+              "fixe": 0
+            },
+            "effets": {
+              "liste": [],
+              "raw": [],
+              "custom": []
+            }
+          }
+        },
+        "distance": []
+      }
+    },
+    "wolf": {
+      "aspects": {
+        "chair": {
+          "value": 2,
+          "ae": 0
+        },
+        "bete": {
+          "value": 4,
+          "ae": 0
+        },
+        "machine": {
+          "value": 4,
+          "ae": 0
+        },
+        "dame": {
+          "value": 2,
+          "ae": 0
+        },
+        "masque": {
+          "value": 4,
+          "ae": 0
+        }
+      },
+      "champDeForce": {
+        "base": 4
+      },
+      "defense": {
+        "base": 4
+      },
+      "reaction": {
+        "base": 4
+      },
+      "armure": {
+        "base": 20
+      },
+      "energie": {
+        "base": 0
+      },
+      "initiative": {
+        "value": 3,
+        "fixe": 2
+      },
+      "armes": {
+        "contact": {
+          "coups": {
+            "label": "Coups",
+            "portee": "contact",
+            "degats": {
+              "dice": 1,
+              "fixe": 0
+            },
+            "violence": {
+              "dice": 1,
+              "fixe": 0
+            },
+            "effets": {
+              "liste": [],
+              "raw": [],
+              "custom": []
+            }
+          }
+        }
+      },
+      "configurations": {
+        "labor": {
+          "niveau": 1,
+          "description": "Les compagnons sont équipés d’outils permettant le transport ou le levage de lourdes charges. Chaque compagnon peut porter à lui seul 150 kg et peut donc transporter des choses pour le chevalier.",
+          "energie": 1,
+          "bonus": {
+            "roll": 1
+          }
+        },
+        "medic": {
+          "niveau": 1,
+          "description": "Les compagnons sont équipés d’un petit matériel médical intégré ainsi que de systèmes d’analyses et de prélèvements.",
+          "energie": 1,
+          "bonus": {
+            "roll": 1,
+            "soins": 2
+          }
+        },
+        "tech": {
+          "niveau": 1,
+          "description": "Les compagnons disposent d’outils intégrés et de modules permettant de se connecter aux appareils informatiques ou électroniques.",
+          "energie": 2,
+          "bonus": {
+            "roll": 1,
+            "reparation": 3
+          }
+        },
+        "fighter": {
+          "niveau": 1,
+          "description": "Les compagnons assistent le chevalier dans son combat, en frappant et en gênant son ou ses adversaires.",
+          "energie": 2,
+          "degats": 1,
+          "violence": 1,
+          "bonus": {
+            "roll": 1,
+            "effets": {
+              "raw": [
+                "barrage 1"
+              ],
+              "liste": [],
+              "custom": []
+            }
+          }
+        },
+        "recon": {
+          "niveau": 1,
+          "description": "Les compagnons sont dotés de systèmes d’enquête et d’observation afin d’assister le chevalier dans ses recherches. Le chevalier peut observer, entendre, sentir et toucher directement depuis un des compagnons (au choix).",
+          "energie": 1,
+          "bonus": {
+            "roll": 1
+          }
+        }
+      }
+    },
+    "crow": {
+      "capacites": "Vol : Peut parcourir une distance équivalente à portée longue par tour (une vitesse égale à 3 si on la compare à celle des véhicules). Le vol est permanent.",
+      "aspects": {
+        "chair": {
+          "value": 6
+        },
+        "bete": {
+          "value": 4
+        },
+        "machine": {
+          "value": 4
+        },
+        "dame": {
+          "value": 0
+        },
+        "masque": {
+          "value": 6
+        }
+      },
+      "champDeForce": {
+        "base": 2
+      },
+      "defense": {
+        "base": 2
+      },
+      "reaction": {
+        "base": 2
+      },
+      "cohesion": {
+        "base": 50
+      },
+      "debordement": {
+        "base": 2
+      },
+      "energie": {
+        "base": 0
+      },
+      "initiative": {
+        "value": 0,
+        "fixe": 1
+      }
+    },
+    "specialEvolutions": {
+      "activation": "tour6Sec",
+      "duree": "Une phase de conflit ou une scène",
+      "adistribuer": 1,
+      "energie": {
+        "base": 16,
+        "prolonger": 8
+      },
+      "lion": {
+        "label": "",
+        "aspects": {
+          "value": 5,
+          "max": 2
+        },
+        "ae": 2,
+        "pg": 60
+      },
+      "wolf": {
+        "label": "",
+        "aspects": {
+          "value": 3,
+          "max": 2
+        },
+        "ae": 1,
+        "bonus": 2
+      },
+      "crow": {
+        "label": "",
+        "aspects": {
+          "value": 2,
+          "max": 2
+        },
+        "cohesion": 50,
+        "debordement": 2,
+        "cdf": 2
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "companions",
+    "softlock": true
+  },
+  "cea": {
+    "label": "Mode Céa",
+    "description": "<p style=\"text-align:justify\">Grâce aux nanomachines, la méta-armure peut se faire passer pour une créature, une personne, un être différent. Cette transformation par les nanomachines peut être étendue jusqu’à 3 mètres de rayon autour de l’armure pour générer des « faux êtres » de nanomachines supplémentaires. Le chevalier peut ainsi faire croire qu’il est accompagné ou augmenter la taille de sa fausse apparence pour se faire passer pour un être plus grand.</p><p style=text-align:justify;><b>Attention :</b> Les nanomachines permettant ces transformations sont toujours en mouvement et créent une sorte d’enveloppe molle sur la méta-armure. Le personnage transformé peut prendre ou ramasser des choses, mais si quelqu’un entre en contact avec lui, il lui est aisé de repérer la supercherie.</p>",
+    "energie": 3,
+    "activation": "combat",
+    "duree": "Instantanée",
+    "espoir": 1,
+    "vague": {
+      "degats": {
+        "dice": 3,
+        "fixe": 0
+      },
+      "violence": {
+        "dice": 3,
+        "fixe": 0
+      },
+      "portee": "Contact / Courte",
+      "effets": {
+        "liste": [],
+        "raw": [
+          "parasitage 2",
+          "dispersion 3",
+          "destructeur",
+          "choc 2"
+        ],
+        "custom": []
+      },
+      "description": "D’un mouvement ample et brusque du bras, le chevalier envoie une puissante vague d’énergie bousculant les ennemis et paralysant les systèmes électroniques."
+    },
+    "salve": {
+      "degats": {
+        "dice": 3,
+        "fixe": 0
+      },
+      "violence": {
+        "dice": 3,
+        "fixe": 0
+      },
+      "portee": "Moyenne",
+      "effets": {
+        "liste": [],
+        "raw": [
+          "ultraviolence",
+          "meurtrier 3",
+          "dispersion 3",
+          "parasitage 1"
+        ],
+        "custom": []
+      },
+      "description": "D’un mouvement rapide du bras vers l’avant, le chevalier propulse plusieurs projectiles bleu nuit qui explosent au moindre contact en puissantes novas d’énergie alpha."
+    },
+    "rayon": {
+      "degats": {
+        "dice": 4,
+        "fixe": 0
+      },
+      "violence": {
+        "dice": 2,
+        "fixe": 0
+      },
+      "portee": "Moyenne",
+      "effets": {
+        "liste": [],
+        "raw": [
+          "parasitage 1",
+          "percearmure 40"
+        ],
+        "custom": []
+      },
+      "description": "D'un mouvement lent du bras tendu vers l'avant, le gantelet du chevalier émet un rayon bleu nuit d'énergie alpha concentré et extrêmement destructeur.\r\n\r\nSpécial : Pour chaque tour où le rayon est maintenu sur un même ennemi, le chevalier peut ajouter 1D6 à ses dégâts. Les dés de dégâts ainsi générés se cumulent tant que le rayon cible un même ennemi."
+    },
+    "textarea": {
+      "descriptionVague": 70,
+      "descriptionSalve": 75,
+      "descriptionRayon": 150,
+      "porteeVague": 50,
+      "porteeSalve": 50,
+      "porteeRayon": 50,
+      "duree": 50
+    },
+    "evolutions": {
+      "energie": 3,
+      "activation": "combat",
+      "duree": "Instantanée",
+      "espoir": 1,
+      "vague": {
+        "degats": {
+          "dice": 3,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 3,
+          "fixe": 0
+        },
+        "portee": "Contact / Courte",
+        "effets": {
+          "liste": [],
+          "raw": [
+            "parasitage 2",
+            "dispersion 3",
+            "destructeur",
+            "choc 2"
+          ],
+          "custom": []
+        },
+        "description": "D’un mouvement ample et brusque du bras, le chevalier envoie une puissante vague d’énergie bousculant les ennemis et paralysant les systèmes électroniques."
+      },
+      "salve": {
+        "degats": {
+          "dice": 3,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 3,
+          "fixe": 0
+        },
+        "portee": "Moyenne",
+        "effets": {
+          "liste": [],
+          "raw": [
+            "ultraviolence",
+            "meurtrier 3",
+            "dispersion 3",
+            "parasitage 1"
+          ],
+          "custom": []
+        },
+        "description": "D’un mouvement rapide du bras vers l’avant, le chevalier propulse plusieurs projectiles bleu nuit qui explosent au moindre contact en puissantes novas d’énergie alpha."
+      },
+      "rayon": {
+        "degats": {
+          "dice": 4,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 2,
+          "fixe": 0
+        },
+        "portee": "Moyenne",
+        "effets": {
+          "liste": [],
+          "raw": [
+            "parasitage 1",
+            "percearmure 40"
+          ],
+          "custom": []
+        },
+        "description": "D'un mouvement lent du bras tendu vers l'avant, le gantelet du chevalier émet un rayon bleu nuit d'énergie alpha concentré et extrêmement destructeur.\r\n\r\nSpécial : Pour chaque tour où le rayon est maintenu sur un même ennemi, le chevalier peut ajouter 1D6 à ses dégâts. Les dés de dégâts ainsi générés se cumulent tant que le rayon cible un même ennemi."
+      },
+      "textarea": {
+        "descriptionVague": 70,
+        "descriptionSalve": 75,
+        "descriptionRayon": 150,
+        "porteeVague": 50,
+        "porteeSalve": 50,
+        "porteeRayon": 50,
+        "duree": 50
+      }
+    },
+    "key": "cea",
+    "softlock": true
+  },
+  "discord": {
+    "label": "Mode Discord",
+    "description": "<p style=\"text-align:justify\">En activant le mode Discord, le chevalier peut troubler la circulation du flux lors d’un combat, corrompant les ordres et rendant les actions des créatures moins sûres et efficaces.</p>",
+    "special": {
+      "c2038": "recolteflux"
+    },
+    "malus": {
+      "reaction": 2,
+      "defense": 2,
+      "actions": 2
+    },
+    "tour": {
+      "flux": 1,
+      "energie": 2,
+      "activation": "deplacement",
+      "duree": "Un tour"
+    },
+    "scene": {
+      "flux": 3,
+      "energie": 6,
+      "activation": "deplacement",
+      "duree": "Une scène ou une phase de conflit"
+    },
+    "textarea": {
+      "dureeTour": 50,
+      "dureeScene": 50
+    },
+    "evolutions": {
+      "malus": {
+        "reaction": 2,
+        "defense": 2,
+        "actions": 2
+      },
+      "tour": {
+        "flux": 1,
+        "energie": 2,
+        "activation": "deplacement",
+        "duree": "Un tour"
+      },
+      "scene": {
+        "flux": 3,
+        "energie": 6,
+        "activation": "deplacement",
+        "duree": "Une scène ou une phase de conflit"
+      },
+      "textarea": {
+        "dureeTour": 50,
+        "dureeScene": 50
+      }
+    },
+    "key": "discord",
+    "softlock": true
+  },
+  "falcon": {
+    "label": "Mode Falcon",
+    "description": "<p style=\"text-align:justify\">Disposant d’un analyseur dernière génération, la Warmaster est capable de détecter les faiblesses et les forces des ennemis. En activant cette capacité, le chevalier perçoit des données sur chaque cicatrice, chaque mouvement, chaque attitude d’un ennemi, qu’il soit humain, monstre des ténèbres ou machine. Par un jeu de reconstitution des faisceaux d’information, la méta-armure analyse les forces et faiblesses de la cible visée et dévoile au chevalier celles qui semblent les plus probables. Utiliser le mode Falcon coûte une action de déplacement.</p>",
+    "energie": 6,
+    "activation": "deplacement",
+    "duree": "Instantanée",
+    "informations": "<p>Découvrir tous les aspects d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir les scores de réaction et de défense d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir tous les aspects exceptionnels d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir le ou les points faibles d’un PNJ (salopard, patron ou colosse).</p><p>Découvrir les armes (et leurs statistiques) d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir les scores de bouclier, d’armure et de santé d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir toutes les capacités d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir tous les aspects et valeurs dérivées d’une bande.</p>",
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "energie": 6,
+      "activation": "deplacement",
+      "duree": "Instantanée",
+      "informations": "<p>Découvrir tous les aspects d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir les scores de réaction et de défense d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir tous les aspects exceptionnels d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir le ou les points faibles d’un PNJ (salopard, patron ou colosse).</p><p>Découvrir les armes (et leurs statistiques) d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir les scores de bouclier, d’armure et de santé d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir toutes les capacités d’un PNJ (hostile, salopard, patron ou colosse).</p><p>Découvrir tous les aspects et valeurs dérivées d’une bande.</p>",
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "falcon",
+    "softlock": true
+  },
+  "forward": {
+    "label": "Mode Forward",
+    "description": "<p style=\"text-align:justify\">La méta-armure est capable d’accélérer le temps sur elle-même pour se déplacer plus rapidement.</p><p style=text-align:justify;>Les portées de déplacement du chevalier – que ce soit son déplacement normal ou ceux octroyés par les modules de course, de saut ou de vol – sont augmentées d’un niveau jusqu’à un maximum égal à portée longue. Une portée contact devient ainsi une portée courte, une portée courte devient une portée moyenne et une portée moyenne devient une portée longue. Au-delà, l’intégrité de l’armure est trop en danger pour que l’IA autorise un tel déplacement. Le déplacement en véhicule, les déplacements accordés par l’OD de Déplacement de niveau 1 ou 3 et par le module de téléportation ne sont pas affectés par cette capacité.</p>",
+    "duree": "1 tour ou 6 secondes",
+    "activation": "aucune",
+    "special": {
+      "atlas": "contrecoups"
+    },
+    "energie": 3,
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "duree": "1 tour ou 6 secondes",
+      "activation": "aucune",
+      "special": {
+        "atlas": "contrecoups"
+      },
+      "energie": 3,
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "forward",
+    "softlock": true
+  },
+  "ghost": {
+    "label": "Mode Ghost",
+    "description": "<p style=\"text-align:justify\">Grâce au mode Ghost, le personnage devient totalement invisible à l’œil nu et ne peut quasiment pas être entendu (seules les communications inter-casques peuvent être effectuées) grâce à un champ réducteur de son.</p>",
+    "interruption": {
+      "actif": true,
+      "label": ""
+    },
+    "activation": "aucune",
+    "duree": "1 tour ou 1 minute",
+    "energie": {
+      "tour": 2,
+      "minute": 6
+    },
+    "bonus": {
+      "aspects": {},
+      "reussites": 3,
+      "attaque": "discretion",
+      "degats": {
+        "caracteristique": "discretion",
+        "inclus": {
+          "od": "",
+          "dice": "",
+          "fixe": ""
+        },
+        "od": true,
+        "dice": false,
+        "fixe": true
+      }
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "interruption": {
+        "actif": true,
+        "label": ""
+      },
+      "activation": "aucune",
+      "duree": "1 tour ou 1 minute",
+      "energie": {
+        "tour": 2,
+        "minute": 6
+      },
+      "bonus": {
+        "aspects": {},
+        "reussites": 3,
+        "attaque": "discretion",
+        "degats": {
+          "caracteristique": "discretion",
+          "inclus": {
+            "od": "",
+            "dice": "",
+            "fixe": ""
+          },
+          "od": true,
+          "dice": false,
+          "fixe": true
+        }
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "ghost",
+    "softlock": true
+  },
+  "goliath": {
+    "label": "Mode Goliath",
+    "description": "<p style=\"text-align:justify\">La méta-armure, en générant de la matière grâce aux nanomachines qui composent son enveloppe, peut augmenter sa masse musculaire et ainsi augmenter en taille à mesure qu’elle gagne en puissance. En activant ce mode, la méta-armure peut ainsi atteindre 6 mètres de haut pour un gain en force et en endurance considérable… Au détriment des réflexes et de la rapidité.</p>",
+    "energie": 2,
+    "activation": "deplacement",
+    "duree": "6 tours ou 1 minute",
+    "taille": {
+      "value": 0,
+      "max": 4
+    },
+    "armesRack": {
+      "label": "",
+      "active": true,
+      "value": 4
+    },
+    "bonus": {
+      "cdf": {
+        "value": 1
+      },
+      "force": {
+        "value": 1
+      },
+      "endurance": {
+        "value": 1
+      },
+      "degats": {
+        "dice": 1
+      },
+      "violence": {
+        "dice": 1
+      }
+    },
+    "malus": {
+      "reaction": {
+        "value": 2
+      },
+      "defense": {
+        "value": 1
+      }
+    },
+    "evolutions": {
+      "energie": 2,
+      "activation": "deplacement",
+      "duree": "6 tours ou 1 minute",
+      "taille": {
+        "value": 0,
+        "max": 4
+      },
+      "armesRack": {
+        "label": "",
+        "active": true,
+        "value": 4
+      },
+      "bonus": {
+        "cdf": {
+          "value": 1
+        },
+        "force": {
+          "value": 1
+        },
+        "endurance": {
+          "value": 1
+        },
+        "degats": {
+          "dice": 1
+        },
+        "violence": {
+          "dice": 1
+        }
+      },
+      "malus": {
+        "reaction": {
+          "value": 2
+        },
+        "defense": {
+          "value": 1
+        }
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "key": "goliath",
+    "softlock": true
+  },
+  "illumination": {
+    "label": "Mode Illumination",
+    "description": "<p style=\"text-align:justify\">L’énergie apeiron dégagée par le noyau de la méta-armure peut être déployée tout autour d’elle pour provoquer différents effets. En fonction de l’intensité de la lumière ou de son état, six effets différents peuvent s’appliquer. Tous les effets de ce mode, sauf Candle, peuvent être prolongés pour le coût en points d’espoir indiqué.</p><p style=text-align:justify;><b>Attention</b> : À l’obtention de la méta-armure, le chevalier doit choisir trois des sept effets listés ici et peut les utiliser. Il ne peut obtenir les autres que grâce aux évolutions de la méta-armure.</p>",
+    "activation": "deplacement",
+    "duree": "1 tour ou 6 secondes",
+    "nbreCapacitesSelected": 3,
+    "nbreCapacitesTotale": 7,
+    "blaze": {
+      "description": "La lumière autour de l’armure peut être modelée en volutes brûlantes qui blessent les créatures de l’Anathème à portée contact.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème à portée contact de l’armure subissent des dégâts et de la violence à chaque tour en phase de conflit ou toutes les 6 secondes lors d’une scène. Le score de bouclier est ignoré. De plus, les ténèbres de type nuit ou pénombre s’éloignent à portée courte.",
+      "degats": 2,
+      "violence": 2,
+      "portee": "contact",
+      "espoir": {
+        "base": 2,
+        "prolonger": 1
+      }
+    },
+    "candle": {
+      "description": "La méta-armure Berserk peut déployer de petites étincelles de lumière douce et chaude qui permettent à un allié de recouvrer de l’espoir.\r\n\r\nEn sacrifiant des points d’espoir (sans aucune réduction possible), le chevalier peut redonner à un allié, PJ ou PNJ, le même nombre de points d’espoir.",
+      "portee": "contact",
+      "espoir": {
+        "dice": 1,
+        "face": 3
+      }
+    },
+    "beacon": {
+      "description": "La lumière luisant de l’armure renforce la détermination des alliés, les rendant plus hargneux. Tant que l’effet est activé, lorsqu’un PJ ou un allié à portée courte de l’armure effectue un test, il reçoit des réussites automatiques aux jets effectués contre les créatures de l’Anathème (combat, poursuite, etc.).",
+      "bonus": 2,
+      "portee": "courte",
+      "espoir": {
+        "base": 2,
+        "prolonger": 1
+      }
+    },
+    "torch": {
+      "description": "La lumière se solidifie autour du personnage, créant une sorte de brume lumineuse. Les humains et animaux qui ne sont pas désespérés et qui sont à portée courte reçoivent un score d’égide ou augmentent leur score d’égide de lorsqu’ils sont la cible de créatures ou d’effets de l’Anathème. En outre, les ténèbres situées à portée courte de l’armure sont considérées comme étant d’une intensité d’un niveau moindre. L’obscurité devient de la nuit, la nuit devient de la pénombre et la pénombre s’efface simplement.",
+      "bonus": 2,
+      "portee": "courte",
+      "espoir": {
+        "base": 3,
+        "prolonger": 1
+      }
+    },
+    "projector": {
+      "description": "La lumière émanant du noyau de la méta-armure peut être concentrée sur une créature de l’Anathème en un rayon puissant. En pleine lumière, la nature horrible de la cible change, elle semble devenir plus belle et se détacher des ténèbres.\r\n\r\nTant que l’effet est activé, la créature ciblée à portée courte, hostile ou salopard, ne peut plus utiliser une de ses capacités. La capacité peut être choisie par le chevalier, mais il doit l’avoir identifiée et pouvoir en décrire les effets. Sinon, c’est le MJ qui choisit.",
+      "portee": "courte",
+      "espoir": {
+        "base": 3,
+        "prolonger": 1
+      }
+    },
+    "lighthouse": {
+      "description": "La lumière de la méta-armure pulse et trouble les créatures de l’Anathème les plus proches. Le flux qui existe entre elles est comme déchiré et sensiblement amoindri par l’énergie apeiron.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème de type hostile à portée courte perdent une action lors de leur tour de jeu.",
+      "portee": "courte",
+      "espoir": {
+        "base": 4,
+        "prolonger": 1
+      }
+    },
+    "lantern": {
+      "description": "Une lumière douce et rassurante émane de la méta-armure. Elle remotive les alliés et paraît même pouvoir anéantir le désespoir.\r\n\r\nTant que l’effet est actif, les désespérés à portée courte de la méta-armure subissent des dégâts avec des effets associés.",
+      "portee": "courte",
+      "degats": 1,
+      "effets": {
+        "raw": [
+          "esperance"
+        ],
+        "liste": [],
+        "custom": []
+      },
+      "espoir": {
+        "base": 4,
+        "prolonger": 1
+      }
+    },
+    "textarea": {
+      "duree": 50,
+      "blaze": 175,
+      "candle": 125,
+      "beacon": 110,
+      "torch": 175,
+      "projector": 190,
+      "lighthouse": 140,
+      "lantern": 120
+    },
+    "evolutions": {
+      "activation": "deplacement",
+      "duree": "1 tour ou 6 secondes",
+      "blaze": {
+        "description": "La lumière autour de l’armure peut être modelée en volutes brûlantes qui blessent les créatures de l’Anathème à portée contact.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème à portée contact de l’armure subissent des dégâts et de la violence à chaque tour en phase de conflit ou toutes les 6 secondes lors d’une scène. Le score de bouclier est ignoré. De plus, les ténèbres de type nuit ou pénombre s’éloignent à portée courte.",
+        "degats": 2,
+        "violence": 2,
+        "portee": "contact",
+        "espoir": {
+          "base": 2,
+          "prolonger": 1
+        }
+      },
+      "candle": {
+        "description": "La méta-armure Berserk peut déployer de petites étincelles de lumière douce et chaude qui permettent à un allié de recouvrer de l’espoir.\r\n\r\nEn sacrifiant des points d’espoir (sans aucune réduction possible), le chevalier peut redonner à un allié, PJ ou PNJ, le même nombre de points d’espoir.",
+        "portee": "contact",
+        "espoir": 1
+      },
+      "beacon": {
+        "description": "La lumière luisant de l’armure renforce la détermination des alliés, les rendant plus hargneux. Tant que l’effet est activé, lorsqu’un PJ ou un allié à portée courte de l’armure effectue un test, il reçoit des réussites automatiques aux jets effectués contre les créatures de l’Anathème (combat, poursuite, etc.).",
+        "bonus": 2,
+        "portee": "courte",
+        "espoir": {
+          "base": 2,
+          "prolonger": 1
+        }
+      },
+      "torch": {
+        "description": "La lumière se solidifie autour du personnage, créant une sorte de brume lumineuse. Les humains et animaux qui ne sont pas désespérés et qui sont à portée courte reçoivent un score d’égide ou augmentent leur score d’égide de lorsqu’ils sont la cible de créatures ou d’effets de l’Anathème. En outre, les ténèbres situées à portée courte de l’armure sont considérées comme étant d’une intensité d’un niveau moindre. L’obscurité devient de la nuit, la nuit devient de la pénombre et la pénombre s’efface simplement.",
+        "bonus": 2,
+        "portee": "courte",
+        "espoir": {
+          "base": 3,
+          "prolonger": 1
+        }
+      },
+      "projector": {
+        "description": "La lumière émanant du noyau de la méta-armure peut être concentrée sur une créature de l’Anathème en un rayon puissant. En pleine lumière, la nature horrible de la cible change, elle semble devenir plus belle et se détacher des ténèbres.\r\n\r\nTant que l’effet est activé, la créature ciblée à portée courte, hostile ou salopard, ne peut plus utiliser une de ses capacités. La capacité peut être choisie par le chevalier, mais il doit l’avoir identifiée et pouvoir en décrire les effets. Sinon, c’est le MJ qui choisit.",
+        "portee": "courte",
+        "espoir": {
+          "base": 3,
+          "prolonger": 1
+        }
+      },
+      "lighthouse": {
+        "description": "La lumière de la méta-armure pulse et trouble les créatures de l’Anathème les plus proches. Le flux qui existe entre elles est comme déchiré et sensiblement amoindri par l’énergie apeiron.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème de type hostile à portée courte perdent une action lors de leur tour de jeu.",
+        "portee": "courte",
+        "espoir": {
+          "base": 4,
+          "prolonger": 1
+        }
+      },
+      "lantern": {
+        "description": "Une lumière douce et rassurante émane de la méta-armure. Elle remotive les alliés et paraît même pouvoir anéantir le désespoir.\r\n\r\nTant que l’effet est actif, les désespérés à portée courte de la méta-armure subissent des dégâts avec des effets associés.",
+        "portee": "courte",
+        "degats": 1,
+        "effets": {
+          "raw": [
+            "esperance"
+          ],
+          "liste": [],
+          "custom": []
+        },
+        "espoir": {
+          "base": 4,
+          "prolonger": 1
+        }
+      },
+      "textarea": {
+        "duree": 50,
+        "blaze": 175,
+        "candle": 125,
+        "beacon": 110,
+        "torch": 175,
+        "projector": 190,
+        "lighthouse": 140,
+        "lantern": 120
+      }
+    },
+    "key": "illumination",
+    "softlock": true
+  },
+  "mechanic": {
+    "label": "Mode Mechanic",
+    "description": "<p style=\"text-align:justify\">Le personnage peut ainsi réparer la méta-armure, le véhicule ou l’équipement d’une personne ou d’un allié.</p>",
+    "activation": {
+      "contact": "deplacement",
+      "distance": "deplacement"
+    },
+    "portee": "Longue",
+    "reparation": {
+      "contact": {
+        "duree": "Instantanée",
+        "dice": 3,
+        "fixe": 6
+      },
+      "distance": {
+        "duree": "Instantanée",
+        "dice": 2,
+        "fixe": 6
+      }
+    },
+    "energie": {
+      "contact": 4,
+      "distance": 6
+    },
+    "textarea": {
+      "dureeContact": 50,
+      "dureeDistance": 50
+    },
+    "evolutions": {
+      "activation": "deplacement",
+      "portee": "Longue",
+      "reparation": {
+        "contact": {
+          "duree": "Instantanée",
+          "dice": 3,
+          "fixe": 6
+        },
+        "distance": {
+          "duree": "Instantanée",
+          "dice": 2,
+          "fixe": 6
+        }
+      },
+      "energie": {
+        "contact": 4,
+        "distance": 6
+      },
+      "textarea": {
+        "dureeContact": 50,
+        "dureeDistance": 50
+      }
+    },
+    "key": "mechanic",
+    "softlock": true
+  },
+  "morph": {
+    "label": "Mode Morph",
+    "description": "<p style=\"text-align:justify\">Lorsqu'il active le mode Morph, le chevalier entre en mode de combat. Habituellement, son corps devient métal et les nanomachines qui le composent sont plus visibles.</p><p style=text-align:justify;><b>Spécial – Perte d'espoir</b> : Chaque activation du mode Morph fait perdre 1 point d'espoir au chevalier (sans aucune réduction possible grâce à un avantage, un module ou une capacité). On considère que la métamorphose corporelle est une torture pour l'esprit du personnage.</p><p style=text-align:justify;>*Effet</b> : Lorsque le mode Morph est actif, le personnage bénéficie automatiquement de 3 des capacités listées ci-dessous. Pour changer de configuration, il doit de nouveau activer le mode Morph et payer son coût en énergie.</p>",
+    "energie": 10,
+    "activation": "aucune",
+    "duree": "Une phase de conflit ou une scène",
+    "espoir": 1,
+    "capacites": 3,
+    "vol": {
+      "description": "Le chevalier vol en nuée de nanomachines. Il bénéficie des effets du module de vol au niveau 1, sans pour autant dépenser l’énergie que lui coûterait l’utilisation du module. Lorsqu’il vole en nuée, le chevalier ne peut utiliser aucun autre module ni aucune arme. Il peut activer le vol pour une action de déplacement et le désactiver gratuitement."
+    },
+    "phase": {
+      "description": "Le chevalier peut passer au travers de la matière lorsqu’il active le mode. Il bénéficie des effets du module de phase au niveau 1 et, contrairement au vol en nuée, il doit dépenser l’énergie requise pour l’utilisation du module. Il peut activer la phase pour une action de déplacement et la désactiver gratuitement.",
+      "activation": "deplacement",
+      "energie": 5,
+      "duree": "1 action pour 50 centimètres de matière"
+    },
+    "etirement": {
+      "description": "Le chevalier, composé de nanomachines, peut étirer ses membres. Lors de scènes, il peut étendre ses membres jusqu’à une dizaine de mètres. En phase de conflit, on considère que ses attaques de contact peuvent aller jusqu’à portée courte. S’il cherche à immobiliser une cible de taille humaine ou plus petite que lui, il reçoit un bonus de 3 réussites automatiques.",
+      "portee": "10m ou portée courte",
+      "bonus": 3
+    },
+    "metal": {
+      "bonus": {
+        "champDeForce": 2
+      }
+    },
+    "fluide": {
+      "bonus": {
+        "reaction": 2,
+        "defense": 2
+      }
+    },
+    "polymorphie": {
+      "description": "Par tour, le personnage peut gratuitement générer un module de son choix parmi ceux-ci (il peut les générer en même temps sur chacune de ses mains et donc utiliser le style akimbo ou ambidextre) :\r\n\r\n- Griffes de combat au niveau 1\r\n- Lame de bras au niveau 1\r\n- Canon de bras au niveau 1.\r\n\r\nLes effets à choisir à l'achat sont ici à choisir directement à la création de personnage et ne peuvent être modifiés.",
+      "griffe": {
+        "portee": "contact",
+        "type": "contact",
+        "degats": {
+          "dice": 2,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 1,
+          "fixe": 0
+        },
+        "effets": {
+          "liste": [],
+          "raw": [],
+          "custom": []
+        }
+      },
+      "lame": {
+        "portee": "contact",
+        "type": "contact",
+        "degats": {
+          "dice": 2,
+          "fixe": 0
+        },
+        "violence": {
+          "dice": 1,
+          "fixe": 0
+        },
+        "effets": {
+          "liste": [],
+          "raw": [],
+          "custom": []
+        }
+      },
+      "canon": {
+        "portee": "distance",
+        "type": "moyenne",
+        "energie": 1,
+        "degats": {
+          "dice": 3,
+          "fixe": 3
+        },
+        "violence": {
+          "dice": 3,
+          "fixe": 3
+        },
+        "effets": {
+          "liste": [],
+          "raw": [
+            "destructeur",
+            "meurtrier",
+            "ultraviolence"
+          ],
+          "custom": []
+        }
+      }
+    },
+    "textarea": {
+      "duree": 50,
+      "vol": 130,
+      "phase": 115,
+      "phaseDuree": 50,
+      "etirement": 130,
+      "etirementPortee": 50,
+      "polymorphie": 205
+    },
+    "evolutions": {
+      "energie": 10,
+      "activation": "aucune",
+      "duree": "Une phase de conflit ou une scène",
+      "espoir": 1,
+      "capacites": 3,
+      "vol": {
+        "description": "Le chevalier vol en nuée de nanomachines. Il bénéficie des effets du module de vol au niveau 1, sans pour autant dépenser l’énergie que lui coûterait l’utilisation du module. Lorsqu’il vole en nuée, le chevalier ne peut utiliser aucun autre module ni aucune arme. Il peut activer le vol pour une action de déplacement et le désactiver gratuitement."
+      },
+      "phase": {
+        "description": "Le chevalier peut passer au travers de la matière lorsqu’il active le mode. Il bénéficie des effets du module de phase au niveau 1 et, contrairement au vol en nuée, il doit dépenser l’énergie requise pour l’utilisation du module. Il peut activer la phase pour une action de déplacement et la désactiver gratuitement.",
+        "activation": "deplacement",
+        "energie": 5,
+        "duree": "1 action pour 50 centimètres de matière"
+      },
+      "etirement": {
+        "description": "Le chevalier, composé de nanomachines, peut étirer ses membres. Lors de scènes, il peut étendre ses membres jusqu’à une dizaine de mètres. En phase de conflit, on considère que ses attaques de contact peuvent aller jusqu’à portée courte. S’il cherche à immobiliser une cible de taille humaine ou plus petite que lui, il reçoit un bonus de 3 réussites automatiques.",
+        "portee": "10m ou portée courte",
+        "bonus": 3
+      },
+      "metal": {
+        "bonus": {
+          "champDeForce": 2
+        }
+      },
+      "fluide": {
+        "bonus": {
+          "reaction": 2,
+          "defense": 2
+        }
+      },
+      "polymorphie": {
+        "description": "Par tour, le personnage peut gratuitement générer un module de son choix parmi ceux-ci (il peut les générer en même temps sur chacune de ses mains et donc utiliser le style akimbo ou ambidextre) :\r\n\r\n- Griffes de combat au niveau 1\r\n- Lame de bras au niveau 1\r\n- Canon de bras au niveau 1.\r\n\r\nLes effets à choisir à l'achat sont ici à choisir directement à la création de personnage et ne peuvent être modifiés.",
+        "griffe": {
+          "portee": "contact",
+          "type": "contact",
+          "degats": {
+            "dice": 2,
+            "fixe": 0
+          },
+          "violence": {
+            "dice": 1,
+            "fixe": 0
+          },
+          "effets": {
+            "liste": [],
+            "raw": [],
+            "custom": []
+          }
+        },
+        "lame": {
+          "portee": "contact",
+          "type": "contact",
+          "degats": {
+            "dice": 2,
+            "fixe": 0
+          },
+          "violence": {
+            "dice": 1,
+            "fixe": 0
+          },
+          "effets": {
+            "liste": [],
+            "raw": [],
+            "custom": []
+          }
+        },
+        "canon": {
+          "portee": "distance",
+          "type": "moyenne",
+          "energie": 1,
+          "degats": {
+            "dice": 3,
+            "fixe": 3
+          },
+          "violence": {
+            "dice": 3,
+            "fixe": 3
+          },
+          "effets": {
+            "liste": [],
+            "raw": [
+              "destructeur",
+              "meurtrier",
+              "ultraviolence"
+            ],
+            "custom": []
+          }
+        }
+      },
+      "textarea": {
+        "duree": 50,
+        "vol": 130,
+        "phase": 115,
+        "phaseDuree": 50,
+        "etirement": 130,
+        "etirementPortee": 50,
+        "polymorphie": 205
+      }
+    },
+    "key": "morph",
+    "softlock": true
+  },
+  "nanoc": {
+    "label": "Mode nanoC",
+    "description": "<p style=\"text-align:justify\">Grâce au mode nanoC, le personnage peut créer des formes simples et géométriques en nanomachines métalliques et grouillantes, d’une taille de 3 mètres cubes maximum.</p><p style=text-align:justify;>Il peut aussi créer des objets détaillés d’une taille de 2 mètres cubes maximum.</p><p style=text-align:justify;>Il peut enfin créer des objets mécaniques, électriques ou électroniques de 1 mètre cube maximum.</p><p style=text-align:justify;>C’est au MJ de déterminer les limites du mode nanoC avec le joueur possédant la méta-armure Priest. Dans tous les cas, si une construction paraît trop complexe, il peut augmenter le temps de création et le coût en énergie. Bien entendu, il peut refuser toutes les constructions qui lui paraissent impossibles.</p>",
+    "activation": "toutes",
+    "duree": "1 minute ou 10 tours",
+    "energie": {
+      "base": 3,
+      "detaille": 6,
+      "mecanique": 9,
+      "prolonger": 2
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "toutes",
+      "duree": "1 minute ou 10 tours",
+      "energie": {
+        "base": 3,
+        "detaille": 6,
+        "mecanique": 9,
+        "prolonger": 2
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "nanoc",
+    "softlock": true
+  },
+  "oriflamme": {
+    "label": "Mode Oriflamme",
+    "description": "<p style=\"text-align:justify\">La méta-armure peut déployer autour d'elle une vague d'étincelles de plasma et de poudre de magnésium très dense qui explose en une lumière éclatante, efficace contre l'Anathème. Toutes les créatures de l'Anathème prises dans le champ de lumière se voient infliger de terribles dégâts. Seul bémol, le mode est coûteux à activer.</p><p style=text-align:justify;><b>Effet</b> : Lorsque le mode est activé, la méta-armure génère un champ de lumière à portée courte. Toutes les créatures de l'Anathème présentes à l'intérieur subissent les dégâts ou la violence du mode. Celles qui se trouvent à portée moyenne autour du champ subissent la moitié des dégâts ou de la violence du mode. Aucun test n'est nécessaire pour toucher les ennemis à portée. Les ennemis à couvert ne subissent pas de dégâts ou de violence. Le mode nécessitant une action de déplacement pour s'activer, un chevalier peut l'activer aussi pour une action de combat en transformant son action de combat en action de déplacement.</p>",
+    "activation": "deplacement",
+    "duree": "Instantanée",
+    "portee": "courte",
+    "energie": 12,
+    "degats": {
+      "dice": 6,
+      "fixe": 6
+    },
+    "violence": {
+      "dice": 6,
+      "fixe": 12
+    },
+    "effets": {
+      "liste": [],
+      "raw": [
+        "antianatheme",
+        "lumiere 2"
+      ],
+      "custom": []
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "deplacement",
+      "duree": "Instantanée",
+      "portee": "courte",
+      "energie": 12,
+      "degats": {
+        "dice": 6,
+        "fixe": 6
+      },
+      "violence": {
+        "dice": 6,
+        "fixe": 12
+      },
+      "effets": {
+        "liste": [],
+        "raw": [
+          "antianatheme",
+          "lumiere 2"
+        ],
+        "custom": []
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "oriflamme",
+    "softlock": true
+  },
+  "puppet": {
+    "label": "Mode Puppet Master",
+    "description": "<p style=\"text-align:justify\">Un chevalier, en manipulant le flux, peut imposer des ordres simples à des créatures de l'Anathème (ou à des désespérés).</p><p style=text-align:justify;><b>Effet</b> : Lorsque le mode Puppet Master est activé, le personnage peut donner un ordre simple, composé de un à trois mots, à une créature de l'Anathème ou à un désespéré (forcément un PNJ) situé à portée moyenne. Il peut par exemple s'agir de fuir, d'attaquer une cible (même une autre créature de l'Anathème), ou encore de défendre le personnage.</p><p style=text-align:justify;>La cible ne peut être que de type hostile et accomplit, en phase de conflit, l'ordre à son tour de jeu, c'est-à-dire en utilisant toutes ses actions disponibles (en dehors d'une phase de conflit, elle doit pouvoir accomplir son ordre en moins de 10 secondes). Elle obéit à l'ordre de la manière la plus simple et rapide qui soit, quitte à mettre sa vie en danger. Une fois l'ordre accompli, la créature l'ayant suivi reprend ses esprits, redevient maîtresse d'elle-même et a, logiquement, terminé son tour de jeu.</p><p style=text-align:justify;>Pour accomplir l'ordre, c'est le MJ qui lance les dés et qui décide (honnêtement) de l'aspect à utiliser et, si le cas s'y prête, des capacités à utiliser.</p><p style=text-align:justify;>Le chevalier peut décider de prolonger son contrôle sur la cible, en renouvelant le même ordre et en dépensant quelques points de flux et d'énergie supplémentaires.</p><p style=text-align:justify;>Il peut aussi décider de donner un ordre (et un seul) à plusieurs créatures en même temps, toujours en dépensant plus d'énergie et de flux.</p>",
+    "special": {
+      "c2038": "recolteflux"
+    },
+    "duree": "1 tour ou 10 secondes",
+    "activation": "deplacement",
+    "creatures": 3,
+    "energie": {
+      "ordre": 2,
+      "supplementaire": 3,
+      "prolonger": 1
+    },
+    "flux": {
+      "has": true,
+      "ordre": 1,
+      "supplementaire": 1,
+      "prolonger": 1
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "duree": "1 tour ou 10 secondes",
+      "activation": "deplacement",
+      "creatures": 3,
+      "energie": {
+        "ordre": 2,
+        "supplementaire": 3,
+        "prolonger": 1
+      },
+      "flux": {
+        "has": true,
+        "ordre": 1,
+        "supplementaire": 1,
+        "prolonger": 1
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "puppet",
+    "softlock": true
+  },
+  "rage": {
+    "label": "Mode Rage",
+    "description": "<p style=\"text-align:justify\">Pour récupérer des points d'espoir, le chevalier doit nourrir la lumière de la méta-armure. L'énergie apeiron ne peut être alimentée que par le sacrifice d'une créature de l'Anathème ou autre, comme si le seul fait de dévorer quelque chose pouvait la faire perdurer.</p><p style=text-align:justify;>En activant ce mode, le chevalier se laisse envahir par la lumière de la méta-armure et tente de faire renaître son propre espoir ainsi que l'énergie de son noyau. Il entre alors en rage et est habité par la lumière qui émane de lui en une fumée brûlante et brillante. Ce mode ne peut être activé qu'en phase de conflit. Les effets du mode Illumination peuvent être utilisés simultanément.</p><p style=text-align:justify;>En activant ce mode, le personnage peut entrer dans différents niveaux de rage qui lui font subir des effets de plus en plus puissants, mais aussi de plus en plus dangereux. Attention, chaque niveau de rage atteint possède les effets du niveau précédent. Pour atteindre un niveau de rage supérieur, le chevalier doit tuer un ennemi ou sacrifier de lui-même 1D6 points d'espoir (sans aucune réduction possible).</p>",
+    "activation": "aucune",
+    "duree": "Jusqu'à la fin de la phase de conflit ou jusqu'à ce que le chevalier ait réussi à tuer un ennemi.",
+    "espoir": 0,
+    "aspects": {},
+    "nourri": {
+      "label": "",
+      "description": "Lorsqu’il est dans le mode Rage, chaque créature ou être humain que le chevalier tue lui fait récupérer un certain nombre de points d’espoir. De plus, si une créature des ténèbres est tuée à portée courte de l’armure, il récupère 1 point d’espoir tant qu’il est dans ce mode",
+      "humain": {
+        "hostile": {
+          "dice": 0,
+          "face": 0,
+          "fixe": 1
+        },
+        "salopard": {
+          "dice": 1,
+          "face": 3,
+          "fixe": 0
+        },
+        "patron": {
+          "dice": 1,
+          "face": 6,
+          "fixe": 3
+        },
+        "bande": {
+          "dice": 1,
+          "face": 6,
+          "fixe": 0
+        }
+      },
+      "anatheme": {
+        "hostile": {
+          "dice": 1,
+          "face": 6,
+          "fixe": 0
+        },
+        "salopard": {
+          "dice": 1,
+          "face": 6,
+          "fixe": 3
+        },
+        "patron": {
+          "dice": 1,
+          "face": 6,
+          "fixe": 6
+        },
+        "bande": {
+          "dice": 2,
+          "face": 6,
+          "fixe": 0
+        }
+      }
+    },
+    "colere": {
+      "label": "",
+      "description": "",
+      "degats": "bete",
+      "violence": "bete",
+      "egide": 3,
+      "defense": 3,
+      "reaction": 3,
+      "subis": 0,
+      "combosBonus": {
+        "has": false,
+        "liste": {
+          "c1": "",
+          "c2": "",
+          "c3": ""
+        }
+      },
+      "combosInterdits": {
+        "has": false,
+        "liste": {
+          "c1": "",
+          "c2": "",
+          "c3": "",
+          "c4": "",
+          "c5": "",
+          "c6": ""
+        }
+      }
+    },
+    "rage": {
+      "label": "",
+      "description": "Le niveau n’est pas cumulé avec le précédent, mais il annule et remplace le précédent (les cumuls sont déjà calculés)\r\n\r\nIl ne peut plus perdre de points d’espoir en dehors du coût de ses capacités.\r\n\r\nIl doit attaquer la créature des ténèbres ou l’ennemi le plus proche en s’approchant le plus possible.\r\n\r\nIl tue ou met automatiquement à l’agonie un ennemi qu’il devrait simplement mettre hors combat.",
+      "degats": "bete",
+      "violence": "bete",
+      "egide": 3,
+      "defense": 9,
+      "reaction": 9,
+      "subis": 0,
+      "combosBonus": {
+        "has": false,
+        "liste": {
+          "c1": "",
+          "c2": "",
+          "c3": ""
+        }
+      },
+      "combosInterdits": {
+        "has": true,
+        "liste": {
+          "c1": "sangFroid",
+          "c2": "parole",
+          "c3": "savoir",
+          "c4": "technique",
+          "c5": "discretion",
+          "c6": ""
+        }
+      }
+    },
+    "fureur": {
+      "label": "",
+      "description": "Le niveau n’est pas cumulé avec le précédent, mais il annule et remplace le précédent (les cumuls sont déjà calculés)\r\n\r\nIl ne peut plus perdre de points d’espoir en dehors du coût de ses capacités.\r\n\r\nIl doit attaquer la créature des ténèbres ou l’ennemi le plus proche en s’approchant le plus possible.\r\n\r\nIl tue ou met automatiquement à l’agonie un ennemi qu’il devrait simplement mettre hors combat.\r\n\r\nIl ignore les effets choc X, parasitage X, domination et anathème.\r\n\r\nToutes les créatures de l’Anathème à portée contact attaquent le PJ au lieu de suivre leur tactique. L’effet du module Banner surpasse cet effet.",
+      "degats": "bete",
+      "violence": "bete",
+      "egide": 6,
+      "defense": 9,
+      "reaction": 9,
+      "subis": 1,
+      "combosBonus": {
+        "has": true,
+        "liste": {
+          "c1": "hargne",
+          "c2": "",
+          "c3": ""
+        }
+      },
+      "combosInterdits": {
+        "has": true,
+        "liste": {
+          "c1": "sangFroid",
+          "c2": "parole",
+          "c3": "savoir",
+          "c4": "technique",
+          "c5": "discretion",
+          "c6": ""
+        }
+      }
+    },
+    "blaze": {
+      "label": "",
+      "description": "La lumière autour de l’armure peut être modelée en volutes brûlantes qui blessent les créatures de l’Anathème à portée contact.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème à portée contact de l’armure subissent des dégâts et de la violence à chaque tour en phase de conflit ou toutes les 6 secondes lors d’une scène. Le score de bouclier est ignoré. De plus, les ténèbres de type nuit ou pénombre s’éloignent à portée courte.",
+      "degats": 2,
+      "violence": 2,
+      "portee": "contact",
+      "espoir": {
+        "base": 2,
+        "prolonger": 1
+      }
+    },
+    "textarea": {
+      "duree": 55,
+      "nourri": 55,
+      "rage": 210,
+      "fureur": 325,
+      "blaze": 180
+    },
+    "evolutions": {
+      "activation": "aucune",
+      "duree": "Jusqu'à la fin de la phase de conflit ou jusqu'à ce que le chevalier ait réussi à tuer un ennemi.",
+      "espoir": 0,
+      "aspects": {},
+      "nourri": {
+        "label": "",
+        "description": "Lorsqu’il est dans le mode Rage, chaque créature ou être humain que le chevalier tue lui fait récupérer un certain nombre de points d’espoir. De plus, si une créature des ténèbres est tuée à portée courte de l’armure, il récupère 1 point d’espoir tant qu’il est dans ce mode",
+        "humain": {
+          "hostile": {
+            "dice": 0,
+            "face": 0,
+            "fixe": 1
+          },
+          "salopard": {
+            "dice": 1,
+            "face": 3,
+            "fixe": 0
+          },
+          "patron": {
+            "dice": 1,
+            "face": 6,
+            "fixe": 3
+          },
+          "bande": {
+            "dice": 1,
+            "face": 6,
+            "fixe": 0
+          }
+        },
+        "anatheme": {
+          "hostile": {
+            "dice": 1,
+            "face": 6,
+            "fixe": 0
+          },
+          "salopard": {
+            "dice": 1,
+            "face": 6,
+            "fixe": 3
+          },
+          "patron": {
+            "dice": 1,
+            "face": 6,
+            "fixe": 6
+          },
+          "bande": {
+            "dice": 2,
+            "face": 6,
+            "fixe": 0
+          }
+        }
+      },
+      "colere": {
+        "label": "",
+        "description": "",
+        "degats": "bete",
+        "violence": "bete",
+        "egide": 3,
+        "defense": 3,
+        "reaction": 3,
+        "subis": 0,
+        "combosBonus": {
+          "has": false,
+          "liste": {
+            "c1": "",
+            "c2": "",
+            "c3": ""
+          }
+        },
+        "combosInterdits": {
+          "has": false,
+          "liste": {
+            "c1": "",
+            "c2": "",
+            "c3": "",
+            "c4": "",
+            "c5": "",
+            "c6": ""
+          }
+        }
+      },
+      "rage": {
+        "label": "",
+        "description": "Le niveau n’est pas cumulé avec le précédent, mais il annule et remplace le précédent (les cumuls sont déjà calculés)\r\n\r\nIl ne peut plus perdre de points d’espoir en dehors du coût de ses capacités.\r\n\r\nIl doit attaquer la créature des ténèbres ou l’ennemi le plus proche en s’approchant le plus possible.\r\n\r\nIl tue ou met automatiquement à l’agonie un ennemi qu’il devrait simplement mettre hors combat.",
+        "degats": "bete",
+        "violence": "bete",
+        "egide": 3,
+        "defense": 9,
+        "reaction": 9,
+        "subis": 0,
+        "combosBonus": {
+          "has": false,
+          "liste": {
+            "c1": "",
+            "c2": "",
+            "c3": ""
+          }
+        },
+        "combosInterdits": {
+          "has": true,
+          "liste": {
+            "c1": "sangFroid",
+            "c2": "parole",
+            "c3": "savoir",
+            "c4": "technique",
+            "c5": "discretion",
+            "c6": ""
+          }
+        }
+      },
+      "fureur": {
+        "label": "",
+        "description": "Le niveau n’est pas cumulé avec le précédent, mais il annule et remplace le précédent (les cumuls sont déjà calculés)\r\n\r\nIl ne peut plus perdre de points d’espoir en dehors du coût de ses capacités.\r\n\r\nIl doit attaquer la créature des ténèbres ou l’ennemi le plus proche en s’approchant le plus possible.\r\n\r\nIl tue ou met automatiquement à l’agonie un ennemi qu’il devrait simplement mettre hors combat.\r\n\r\nIl ignore les effets choc X, parasitage X, domination et anathème.\r\n\r\nToutes les créatures de l’Anathème à portée contact attaquent le PJ au lieu de suivre leur tactique. L’effet du module Banner surpasse cet effet.",
+        "degats": "bete",
+        "violence": "bete",
+        "egide": 6,
+        "defense": 9,
+        "reaction": 9,
+        "subis": 1,
+        "combosBonus": {
+          "has": true,
+          "liste": {
+            "c1": "hargne",
+            "c2": "",
+            "c3": ""
+          }
+        },
+        "combosInterdits": {
+          "has": true,
+          "liste": {
+            "c1": "sangFroid",
+            "c2": "parole",
+            "c3": "savoir",
+            "c4": "technique",
+            "c5": "discretion",
+            "c6": ""
+          }
+        }
+      },
+      "blaze": {
+        "label": "",
+        "description": "La lumière autour de l’armure peut être modelée en volutes brûlantes qui blessent les créatures de l’Anathème à portée contact.\r\n\r\nTant que l’effet est activé, les créatures de l’Anathème à portée contact de l’armure subissent des dégâts et de la violence à chaque tour en phase de conflit ou toutes les 6 secondes lors d’une scène. Le score de bouclier est ignoré. De plus, les ténèbres de type nuit ou pénombre s’éloignent à portée courte.",
+        "degats": 2,
+        "violence": 2,
+        "portee": "contact",
+        "espoir": {
+          "base": 2,
+          "prolonger": 1
+        }
+      },
+      "textarea": {
+        "duree": 55,
+        "nourri": 55,
+        "rage": 10,
+        "colere": 210,
+        "fureur": 325,
+        "blaze": 180
+      }
+    },
+    "key": "rage",
+    "softlock": true
+  },
+  "record": {
+    "label": "Mode Record",
+    "description": "<p style=\"text-align:justify\">Grâce à ce mode, le chevalier peut manipuler le temps pour enregistrer une attaque qu’il va effectuer et faire en sorte qu’un double du passé apparaisse fugacement pour la reproduire jusqu’à 6 secondes plus tard. Ainsi, il peut enregistrer une attaque d’un tour donné, se déplacer et frapper au tour suivant, tout en reproduisant l’attaque enregistrée.</p><p style=text-align:justify;>En activant ce mode, le chevalier déclenche l’enregistrement de la prochaine attaque qu’il va accomplir durant ce tour. Il doit activer le mode avant de faire son attaque. Elle peut être effectuée avec une arme ou un module. Au tour suivant, il peut effectuer ses actions normalement et activer le mode sans coût en énergie pour reproduire exactement son attaque effectuée au tour précédent, un double de lui-même, comme une rémanence, apparaissant pour frapper ou tirer de nouveau.</p><p style=text-align:justify;>L’action d’attaque enregistrée est reproduite à l’identique. Cela signifie que le jet d’attaque, le jet de dégâts ou de violence, la portée et les effets sont exactement les mêmes (même si le joueur a dépensé un point d’héroïsme pour faire le maximum de dégâts). L’énergie dépensée pour augmenter les dégâts ou ajouter des effets, ainsi que les munitions, ne sont pas à déduire de nouveau. L’attaque peut cependant être portée sur la même cible ou une autre. En conséquence, si le jet d’attaque n’est pas suffisant pour toucher, l’attaque rate simplement et aura été enregistrée pour rien.</p><p style=text-align:justify;>Reproduire une attaque ne coûte aucun PE.</p><p style=text-align:justify;>Enregistrer l'attaque ainsi que la reproduire ne coûte aucune action. Cependant, une seule attaque peut être enregistrée par tour.</p><p style=text-align:justify;>L'attaque enregistrée lors d'un tour doit être reproduite au tour suivant, sinon elle et l'énergie sont perdues.</p>",
+    "duree": "Instantanée",
+    "activation": "aucune",
+    "special": {
+      "atlas": "contrecoups"
+    },
+    "energie": 12,
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "duree": "Instantanée",
+      "activation": "aucune",
+      "special": {
+        "atlas": "contrecoups"
+      },
+      "energie": 12,
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "record",
+    "softlock": true
+  },
+  "rewind": {
+    "label": "Mode Rewind",
+    "description": "<p style=\"text-align:justify\">Dans un flash incolore suivi d'un mouvement rapide presque invisible, la méta-armure (et par conséquent son porteur) peut disparaître et revenir à l'état et à la position qu'elle avait exactement 6 secondes auparavant, récupérant ce qu'elle avait perdu durant ce laps de temps ou annulant ce qui lui avait été infligé. L'environnement autour ne se modifie pas, seule la Warlock subit ce retour temporel.</p><p style=text-align:justify;>Activer cette capacité permet ainsi d'obtenir les effets suivants :</p><p style=text-align:justify;>- Revenir aux points de santé possédés il y a moins de 6 secondes (ou au tour de jeu précédent), qu'ils soient inférieurs ou supérieurs.</p><p style=text-align:justify;>- Revenir aux points d'armure possédés il y a moins de 6 secondes (ou au tour de jeu précédent), qu'ils soient inférieurs ou supérieurs.</p><p style=text-align:justify;>- Annuler une blessure grave reçue il y a moins de 6 secondes (ou au tour de jeu précédent).</p><p style=text-align:justify;>- Récupérer la(les) munition(s) d'un module (et seulement d'un module) utilisée(s) il y a moins de 6 secondes (ou au tour de jeu précédent).</p><p style=text-align:justify;>- Récupérer un(des) nod(s) utilisé(s) il y a moins de 6 secondes (ou au tour de jeu précédent).</p><p style=text-align:justify;>- Se déplacer instantanément à sa position d'il y a 6 secondes (ou au tour de jeu précédent).</p><p style=text-align:justify;>L'ensemble des effets s'activent en même temps. C'est au PJ de réguler ses scores et ses équipements. Les points d'espoir et les points d'énergie ne sont pas concernés par ces effets. Les armes cassées et tous les équipements autres que les nods et munitions de modules utilisés ne sont pas affectés non plus.</p><p style=text-align:justify;><b>Attention</b> : L'effet est personnel et est restreint à la méta-armure elle-même, à son porteur, à ses armes, à ses modules et à l'équipement situé dans son pack. Ce qui est présent autour de la méta-armure ou en contact avec elle (comme un allié) n'est pas affecté. S'il advenait qu'un élément empêche le retour de la méta-armure et de son porteur à sa position antérieure, alors ils se rapprochent simplement le plus possible de cette position sans entrer en collision avec.</p><p style=text-align:justify;>Le chevalier doit l'activer à son tour de jeu en combat. Il doit attendre 6s après un Rewind pour l'activer de nouveau. Cela signifie qu'en phase de conflit, il ne peut faire qu'un Rewind/tour.</p>",
+    "duree": "Instantanée",
+    "activation": "aucune",
+    "special": {
+      "atlas": "contrecoups"
+    },
+    "energie": 15,
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "duree": "Instantanée",
+      "activation": "aucune",
+      "special": {
+        "atlas": "contrecoups"
+      },
+      "energie": 15,
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "rewind",
+    "softlock": true
+  },
+  "totem": {
+    "label": "Mode Totem",
+    "description": "<p style=\"text-align:justify\">Le chevalier peut matérialiser son IA en un ou plusieurs corps. Ceux-ci sont grossièrement détaillés et ressemblent à la méta-armure du chevalier, mais dans une version pixélisée ou mal façonnée. Ces corps sont nommés « totems » et peuvent aider le chevalier dans de nombreuses tâches. Ils sont énergétiquement très coûteux à matérialiser et à maintenir en état. L’IA peut bien entendu subir les effets de l’imprégnation lorsqu’elle est dans un ou plusieurs totems. Les totems doivent rester à portée moyenne du chevalier pour exister. Ils peuvent l’assister dans toutes les tâches, mais sont extrêmement sensibles à toutes formes d’agression. Le moindre choc violent les fait tout simplement disparaître. Les totems peuvent se déplacer, agir avec précision, communiquer, mais ils ne peuvent pas agir sans ordre de la part du chevalier, ni prendre d’initiative.</p><p style=text-align:justify;>Le chevalier peut matérialiser des totems. En termes de jeu, un totem est simplement détruit par une attaque qui le cible (les attaques qui le ciblent touchent automatiquement, car un totem ne se défend pas). Le chevalier peut utiliser ses totems pour ajouter une de ses caractéristiques supplémentaires par totem, sans les overdrives, à un test qu’il effectue. Comme lors d’une entraide, les caractéristiques doivent être différentes à chaque fois. Ils peuvent être utilisés en combat ou pour toute autre action. Les totems peuvent être utilisés pour la plupart des tests, mais le PJ doit toujours argumenter sur leur utilisation et les utiliser avec l’accord du MJ.</p>",
+    "activation": "aucune",
+    "duree": "1 tour ou 6 secondes",
+    "portee": "courte",
+    "nombre": 2,
+    "impregnation": 1,
+    "special": {
+      "atlas": "impregnation"
+    },
+    "energie": {
+      "base": 3,
+      "prolonger": 1
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "aucune",
+      "duree": "1 tour ou 6 secondes",
+      "portee": "courte",
+      "nombre": 2,
+      "impregnation": 1,
+      "energie": {
+        "base": 3,
+        "prolonger": 1
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "totem",
+    "softlock": true
+  },
+  "warlord": {
+    "label": "Mode Warlord",
+    "description": "<p style=\"text-align:justify\">Le porteur de l'armure peut améliorer à distance les méta-armures des chevaliers pendant un certain temps. Ces améliorations, appelées « impulsions », offrent des bonus substantiels aux membres de la coterie alliés. Une armure Warmaster possède au départ 3 impulsions différentes, à choisir parmi celles proposées, représentées par des grésillements de couleur lorsqu'elles sont utilisées.</p><p style=text-align:justify;></p><p style=text-align:justify;>Utiliser une impulsion coûte une action de déplacement. Les impulsions possèdent toutes une portée lointaine et peuvent être lancées sur les chevaliers alliés, même si le personnage ne possède pas de ligne vue sur eux ou s'ils sont invisibles.</p><p style=text-align:justify;>Quand c'est indiqué, le porteur de la méta-armure peut décider de se cibler lui-même. Le chevalier peut aussi décider de recevoir l'effet bonus offert à un ou plusieurs alliés pour un coût en énergie supplémentaire égal à la moitié du coût de base en énergie de l'impulsion (arrondi à l'entier supérieur). Viser plusieurs alliés et se viser soi-même avec une impulsion ne coûte aucune action supplémentaire autre que celle de base.</p><p style=text-align:justify;></p><p style=text-align:justify;>Quand c'est indiqué, certaines impulsions peuvent être prolongées pour un coût égal à la moitié du coût total d'activation de l'impulsion (en comptabilisant le coût d'éventuelles cibles supplémentaires), avec un minimum de 1 PE dépensé. Le chevalier décide à chaque tour de prolonger ou non une impulsion. Il dépense l'énergie à chaque tour où il décide de prolonger une impulsion. Prolonger une impulsion ne coûte aucune action. Il est tout à fait possible de prolonger plusieurs impulsions en même temps, mais on ne peut pas cumuler plusieurs fois la même impulsion sur une cible.</p><p style=text-align:justify;>Exemple : <i>Le personnage de Nicolas utilise une impulsion d'esquive sur un allié, il doit donc dépenser 3 PE. Il décide cependant d'utiliser cette impulsion aussi sur lui-même. Il dépense donc la moitié du coût de base en énergie, c'est-à-dire 2, et bénéficie de l'effet. Au total, pour son allié et lui-même, l'impulsion aura coûté 5 PE.</i></p>",
+    "impulsions": {
+      "selection": 3,
+      "action": {
+        "activation": "deplacement",
+        "duree": "1 tour",
+        "bonus": {
+          "description": "Un allié (et un seul) au choix du porteur de la méta-armure obtient une action de combat ou de déplacement supplémentaire lors de son prochain tour."
+        },
+        "energie": {
+          "allie": 4,
+          "porteur": 10
+        }
+      },
+      "esquive": {
+        "activation": "deplacement",
+        "duree": "1 tour (peut être prolongé)",
+        "bonus": {
+          "reaction": 2,
+          "defense": 2
+        },
+        "energie": {
+          "allie": 3,
+          "porteur": 2,
+          "prolonger": 2
+        }
+      },
+      "force": {
+        "activation": "deplacement",
+        "duree": "1 tour (peut être prolongé)",
+        "bonus": {
+          "champDeForce": 2
+        },
+        "energie": {
+          "allie": 2,
+          "porteur": 1,
+          "prolonger": 1
+        }
+      },
+      "guerre": {
+        "activation": "deplacement",
+        "duree": "1 tour (peut être prolongé)",
+        "bonus": {
+          "degats": 1,
+          "violence": 1
+        },
+        "energie": {
+          "allie": 1,
+          "porteur": 1,
+          "prolonger": 1
+        }
+      },
+      "energie": {
+        "activation": "deplacement",
+        "duree": "Instantanée",
+        "bonus": {
+          "description": "Un allié en méta-armure, au choix du PJ, reçoit une partie de l’énergie de la Warmaster. 1 à 5 points d’énergie, à la discrétion du joueur, peuvent être octroyés à un allié, mais pas à la Warmaster elle-même."
+        },
+        "energie": {
+          "min": 1,
+          "max": 5
+        }
+      }
+    },
+    "textarea": {
+      "dureeAction": 50,
+      "dureeForce": 50,
+      "dureeEnergie": 50,
+      "dureeEsquive": 50,
+      "dureeGuerre": 50,
+      "bonusAction": 85,
+      "bonusEnergie": 110
+    },
+    "evolutions": {
+      "impulsions": {
+        "selection": 3,
+        "action": {
+          "activation": "deplacement",
+          "duree": "1 tour",
+          "bonus": {
+            "description": "Un allié (et un seul) au choix du porteur de la méta-armure obtient une action de combat ou de déplacement supplémentaire lors de son prochain tour."
+          },
+          "energie": {
+            "allie": 4,
+            "porteur": 10
+          }
+        },
+        "esquive": {
+          "activation": "deplacement",
+          "duree": "1 tour (peut être prolongé)",
+          "bonus": {
+            "reaction": 2,
+            "defense": 2
+          },
+          "energie": {
+            "allie": 3,
+            "porteur": 2,
+            "prolonger": 2
+          }
+        },
+        "force": {
+          "activation": "deplacement",
+          "duree": "1 tour (peut être prolongé)",
+          "bonus": {
+            "champDeForce": 2
+          },
+          "energie": {
+            "allie": 2,
+            "porteur": 1,
+            "prolonger": 1
+          }
+        },
+        "guerre": {
+          "activation": "deplacement",
+          "duree": "1 tour (peut être prolongé)",
+          "bonus": {
+            "degats": 1,
+            "violence": 1
+          },
+          "energie": {
+            "allie": 1,
+            "porteur": 1,
+            "prolonger": 1
+          }
+        },
+        "energie": {
+          "activation": "deplacement",
+          "duree": "Instantanée",
+          "bonus": {
+            "description": "Un allié en méta-armure, au choix du PJ, reçoit une partie de l’énergie de la Warmaster. 1 à 5 points d’énergie, à la discrétion du joueur, peuvent être octroyés à un allié, mais pas à la Warmaster elle-même."
+          },
+          "energie": {
+            "min": 1,
+            "max": 5
+          }
+        }
+      },
+      "textarea": {
+        "dureeAction": 50,
+        "dureeForce": 50,
+        "dureeEnergie": 50,
+        "dureeEsquive": 50,
+        "dureeGuerre": 50,
+        "bonusAction": 85,
+        "bonusEnergie": 110
+      }
+    },
+    "key": "warlord",
+    "softlock": true
+  },
+  "watchtower": {
+    "label": "Mode Watchtower",
+    "description": "<p style=\"text-align:justify\">La méta-armure peut déployer sur ses jambes deux modules de stabilisation qui lui permettent de tirer avec plus de rapidité.</p>",
+    "activation": "deplacement3Sec",
+    "duree": "Jusqu'à désactivation",
+    "energie": 2,
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "deplacement3Sec",
+      "duree": "Jusqu'à désactivation",
+      "energie": 2,
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "watchtower",
+    "softlock": true
+  },
+  "windtalker": {
+    "label": "Mode Windtalker",
+    "description": "<p style=\"text-align:justify\">En activant ce mode, le chevalier peut lire le flux émis par les créatures de l’Anathème, comprendre leurs tactiques et leurs futures actions.</p><p style=text-align:justify;><b>Effet</b> : Lorsque le chevalier active ce mode, il prend connaissance des tactiques d’un type de créature de l’Anathème (bande, hostile, salopard ou patron) présent dans la scène ou dans la phase de conflit. De plus, au tour où le mode est activé, le MJ doit annoncer la prochaine action (et uniquement la prochaine) de chaque créature de l’Anathème présente dans la scène ou dans la phase de conflit à portée moyenne du personnage.</p>",
+    "special": {
+      "c2038": "recolteflux"
+    },
+    "flux": 2,
+    "energie": 4,
+    "activation": "deplacement",
+    "duree": "Instantanée",
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "flux": 2,
+      "energie": 4,
+      "activation": "deplacement",
+      "duree": "Instantanée",
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "windtalker",
+    "softlock": true
+  },
+  "zen": {
+    "label": "Mode Zen",
+    "description": "<p style=\"text-align:justify\">Après un combat particulièrement éprouvant pour son esprit et son espoir, le chevalier peut demander à l’IA de son armure d’activer le mode Zen. Dans ce mode, le chevalier se met à genou, les mains sur les cuisses et se perd dans des rêveries lointaines provoquées par l’IA et destinées à nettoyer son esprit du désespoir.</p>",
+    "espoir": 0,
+    "difficulte": 5,
+    "aspects": {
+      "chair": {
+        "caracteristiques": {
+          "deplacement": {
+            "value": false
+          },
+          "force": {
+            "value": false
+          },
+          "endurance": {
+            "value": false
+          }
+        }
+      },
+      "bete": {
+        "caracteristiques": {
+          "hargne": {
+            "value": true
+          },
+          "combat": {
+            "value": false
+          },
+          "instinct": {
+            "value": false
+          }
+        }
+      },
+      "machine": {
+        "caracteristiques": {
+          "tir": {
+            "value": false
+          },
+          "savoir": {
+            "value": false
+          },
+          "technique": {
+            "value": false
+          }
+        }
+      },
+      "dame": {
+        "caracteristiques": {
+          "aura": {
+            "value": false
+          },
+          "parole": {
+            "value": false
+          },
+          "sangFroid": {
+            "value": true
+          }
+        }
+      },
+      "masque": {
+        "caracteristiques": {
+          "discretion": {
+            "value": false
+          },
+          "dexterite": {
+            "value": false
+          },
+          "perception": {
+            "value": false
+          }
+        }
+      }
+    },
+    "evolutions": {
+      "espoir": 0,
+      "difficulte": 5,
+      "aspects": {
+        "chair": {
+          "caracteristiques": {
+            "deplacement": {
+              "value": false
+            },
+            "force": {
+              "value": false
+            },
+            "endurance": {
+              "value": false
+            }
+          }
+        },
+        "bete": {
+          "caracteristiques": {
+            "hargne": {
+              "value": true
+            },
+            "combat": {
+              "value": false
+            },
+            "instinct": {
+              "value": false
+            }
+          }
+        },
+        "machine": {
+          "caracteristiques": {
+            "tir": {
+              "value": false
+            },
+            "savoir": {
+              "value": false
+            },
+            "technique": {
+              "value": false
+            }
+          }
+        },
+        "dame": {
+          "caracteristiques": {
+            "aura": {
+              "value": false
+            },
+            "parole": {
+              "value": false
+            },
+            "sangFroid": {
+              "value": true
+            }
+          }
+        },
+        "masque": {
+          "caracteristiques": {
+            "discretion": {
+              "value": false
+            },
+            "dexterite": {
+              "value": false
+            },
+            "perception": {
+              "value": false
+            }
+          }
+        }
+      }
+    },
+    "key": "zen",
+    "softlock": true
+  },
+  "type": {
+    "label": "Type",
+    "description": "<p style=\"text-align:justify\">La méta-armure Warrior ne possède pas de capacité active de base, mais des types lui offrant une plus grande polyvalence. Chaque type est dédié à un aspect et apporte au chevalier un overdrive dans les 3 caractéristiques de l'aspect auquel il est lié, au choix du joueur. À la création, le chevalier choisit 3 types que sa méta-armure possède de base.</p><p style=text-align:justify;>Les overdrives acquis grâce aux types s'ajoutent à ceux achetés ou offerts. Ils apportent exactement tous les avantages normalement obtenus par chaque overdrive (réussite automatique, bonus et capacités). Même si la limite de niveaux d'overdrive est de 5, ceux apportés par les différents types ne comptent pas dans cette limite. Ce qui veut dire que, grâce aux types, le chevalier peut passer à 6 OD dans une ou plusieurs caractéristiques, voire plus (évidemment, cela n'arrive que lorsque beaucoup de PG ont été accumulés).</p><p style=text-align:justify;>Un seul type peut être activé à la fois, et activer un type prend une action de déplacement. Il s'active lors de cette action de déplacement et perdure jusqu'au début du prochain tour du personnage. Le chevalier peut dépenser de l'énergie pour prolonger le type. Cela ne lui coûte aucune action. Quoi qu'il arrive, un chevalier en méta-armure Warrior ne peut pas changer de type plusieurs fois par tour, même quand l'activation d'un type ne coûte plus d'action.</p>",
+    "activation": "deplacement",
+    "duree": "1 tour ou une scène",
+    "nbreType": 3,
+    "energie": {
+      "tour": 1,
+      "scene": 6
+    },
+    "type": {
+      "soldier": {
+        "aspect": "chair",
+        "liste": {
+          "deplacement": {
+            "value": 1
+          },
+          "force": {
+            "value": 1
+          },
+          "endurance": {
+            "value": 1
+          }
+        }
+      },
+      "hunter": {
+        "aspect": "bete",
+        "liste": {
+          "hargne": {
+            "value": 1
+          },
+          "combat": {
+            "value": 1
+          },
+          "instinct": {
+            "value": 1
+          }
+        }
+      },
+      "scholar": {
+        "aspect": "machine",
+        "liste": {
+          "tir": {
+            "value": 1
+          },
+          "savoir": {
+            "value": 1
+          },
+          "technique": {
+            "value": 1
+          }
+        }
+      },
+      "herald": {
+        "aspect": "dame",
+        "liste": {
+          "aura": {
+            "value": 1
+          },
+          "parole": {
+            "value": 1
+          },
+          "sangFroid": {
+            "value": 1
+          }
+        }
+      },
+      "scout": {
+        "aspect": "masque",
+        "liste": {
+          "discretion": {
+            "value": 1
+          },
+          "dexterite": {
+            "value": 1
+          },
+          "perception": {
+            "value": 1
+          }
+        }
+      }
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "deplacement",
+      "duree": "1 tour ou une scène",
+      "nbreType": 3,
+      "energie": {
+        "tour": 1,
+        "scene": 6
+      },
+      "type": {
+        "soldier": {
+          "aspect": "chair",
+          "liste": {
+            "deplacement": {
+              "value": 1
+            },
+            "force": {
+              "value": 1
+            },
+            "endurance": {
+              "value": 1
+            }
+          }
+        },
+        "hunter": {
+          "aspect": "bete",
+          "liste": {
+            "hargne": {
+              "value": 1
+            },
+            "combat": {
+              "value": 1
+            },
+            "instinct": {
+              "value": 1
+            }
+          }
+        },
+        "scholar": {
+          "aspect": "machine",
+          "liste": {
+            "tir": {
+              "value": 1
+            },
+            "savoir": {
+              "value": 1
+            },
+            "technique": {
+              "value": 1
+            }
+          }
+        },
+        "herald": {
+          "aspect": "dame",
+          "liste": {
+            "aura": {
+              "value": 1
+            },
+            "parole": {
+              "value": 1
+            },
+            "sangFroid": {
+              "value": 1
+            }
+          }
+        },
+        "scout": {
+          "aspect": "masque",
+          "liste": {
+            "discretion": {
+              "value": 1
+            },
+            "dexterite": {
+              "value": 1
+            },
+            "perception": {
+              "value": 1
+            }
+          }
+        }
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "type",
+    "softlock": true
+  },
+  "vision": {
+    "label": "Vision",
+    "description": "<p style=\"text-align:justify\">Grâce au système de vision de l’armure Ranger, le personnage peut voir, pendant quelques secondes, des choses qui ne devraient pas être vues. Grâce à la « Vision », le personnage peut distinguer les gaz, le vent, les maladies, la respiration, les créatures microscopiques, les ondes radio, l’Anathème, les pensées, etc. C’est au joueur de dire au MJ ce qu’il désire voir. En fonction de la difficulté de la vision, le chevalier doit dépenser de 5 à 10 points d’énergie, au choix du MJ.</p><p style=text-align:justify;>Le MJ décrit ensuite au PJ ce qu’il voit durant quelques secondes, il peut être très précis ou, à l’inverse, nébuleux, la Vision étant parfois peu précise.</p><p style=text-align:justify;>La Vision ne passe bien entendu que par la vue. Si le PJ choisit par exemple de voir les pensées d’une personne, il voit des mots ou des images, mais n’entend aucun son.</p>",
+    "activation": "deplacement6Sec",
+    "duree": "6 secondes",
+    "energie": {
+      "min": 5,
+      "max": 10
+    },
+    "textarea": {
+      "duree": 50
+    },
+    "evolutions": {
+      "activation": "deplacement6Sec",
+      "duree": "6 secondes",
+      "energie": {
+        "min": 5,
+        "max": 10
+      },
+      "textarea": {
+        "duree": 50
+      }
+    },
+    "key": "vision",
+    "softlock": true
+  }
+}

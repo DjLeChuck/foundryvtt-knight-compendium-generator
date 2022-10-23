@@ -1,0 +1,292 @@
+{
+  "contrecoups": {
+    "label": "Contrecoups",
+    "description": "<p style=\"text-align:justify\">La puissance de la Warlock n'est pas sans contrepartie. Ces deux contrecoups sont cumulatifs : l'un est constant, l'autre peut se déclencher après l'utilisation d'une des capacités Rewind, Forward ou Record.</p><p style=text-align:justify;><b>DÉFAILLANCE TEMPORELLE</b></p><p style=text-align:justify;>Toutes les armes à projectiles ou un peu trop évoluées technologiquement subissent des défaillances ou de graves incidents lorsque le porteur de la méta-armure Warlock utilise ses capacités.</p><p style=text-align:justify;>L'arsenal interdit aux porteurs de méta-armure Warlock d'acquérir des armes à distance. De plus, il leur est interdit de recevoir des armes de contact possédant 5 effets ou plus, effets d'amélioration inclus (en dehors des armes de prestige et des effets offerts par la Forge appliqués sur l'arme).</p><p style=text-align:justify;><b>PARADOXE TEMPOREL</b></p><p style=text-align:justify;>L'utilisation des capacités de cette méta-armure met à mal l'intégrité temporelle du personnage. À chaque fois qu'il active une de ses trois capacités de méta-armure durant une scène ou une phase de conflit, le personnage doit le noter. Une fois la scène ou la phase terminée, il peut effacer ses notes.</p><p style=text-align:justify;>Après la première utilisation, à chaque fois qu'il utilise une de ses trois capacités de méta-armure, le personnage doit effectuer un test base <i>Sang-Froid</i> ou <i>Hargne</i>, sans prendre en compte les overdrives, pour résister aux effets temporels. La difficulté du test est égale au nombre d'utilisations de capacités de la méta-armure durant la scène ou la phase de conflit.</p><p style=text-align:justify;>Si le teste échoue, le personnage doit lancer 2D6 et se référer au tableau dans l'atlas.</p><p style=text-align:justify;>- </b>Déchirure</b> : Le corps du personnage est déchiré dans le temps. Il reçoit une blessure grave au hasard qui s'applique automatiquement.</p><p style=text-align:justify;>- </b>Défaillance</b> : Le CdF de la méta-armure tombe à 0 durant 1D3 tours</p><p style=text-align:justify;>- </b>Désagrégation</b> : La méta-armure du personnage subit 3D6 points de dégâts sans CdF. La capacité Rewind ne peut les annuler.</p><p style=text-align:justify;>- </b>Désorientation</b> : Le chevalier est mentalement désorienté. Il subit une perte d'1D6 points d'espoir.</p><p style=text-align:justify;>- </b>Disparition</b> : Disparition : Dans un flash, le personnage disparaît de la scène et n'en revient qu'à la fin.</p><p style=text-align:justify;>- </b>Fragmentation</b> : Le personnage subit des dégâts sur sa psyché et oublie qui il est pendant 1D6 tours. Au MJ et PJ d'improviser.</p><p style=text-align:justify;>- </b>Incident</b> : Le personnage subit 4D6 points de dégâts directement sur la santé. La capacité Rewind ne peut pas annuler ces dégâts.</p><p style=text-align:justify;>- </b>Siphon</b> : L'énergie du personnage est instantanément baissée de 6D6 points.</p><p style=text-align:justify;>- </b>Sursaut</b> : Pendant 1D6 tours, la méta-armure saute constamment dans le temps. Il doit retirer 2 réussites à chacun de ses tests.</p>",
+    "tableau": {
+      "c1": {
+        "l1": "Déchirure",
+        "l2": "Disparition",
+        "l3": "Disparition",
+        "l4": "Incident",
+        "l5": "Siphon",
+        "l6": "Sursaut"
+      },
+      "c2": {
+        "l1": "Disparition",
+        "l2": "Incident",
+        "l3": "Incident",
+        "l4": "Fragmentation",
+        "l5": "Siphon",
+        "l6": "Sursaut"
+      },
+      "c3": {
+        "l1": "Incident",
+        "l2": "Incident",
+        "l3": "Fragmentation",
+        "l4": "Siphon",
+        "l5": "Sursaut",
+        "l6": "Désorientation"
+      },
+      "c4": {
+        "l1": "Incident",
+        "l2": "Fragmentation",
+        "l3": "Siphon",
+        "l4": "Sursaut",
+        "l5": "Désorientation",
+        "l6": "Défaillance"
+      },
+      "c5": {
+        "l1": "Siphon",
+        "l2": "Siphon",
+        "l3": "Sursaut",
+        "l4": "Désorientation",
+        "l5": "Désagrégation",
+        "l6": "Défaillance"
+      },
+      "c6": {
+        "l1": "Sursaut",
+        "l2": "Sursaut",
+        "l3": "Désorientation",
+        "l4": "Désagrégation",
+        "l5": "Défaillance",
+        "l6": "Défaillance"
+      }
+    },
+    "relance": {
+      "label": "",
+      "value": false
+    },
+    "maxeffets": {
+      "label": "",
+      "value": true,
+      "max": 5
+    },
+    "armedistance": {
+      "label": "",
+      "value": false
+    },
+    "jet": {
+      "aspects": {},
+      "c1": "hargne",
+      "c2": "sangFroid"
+    },
+    "evolutions": {
+      "tableau": {
+        "c1": {
+          "l1": "Déchirure",
+          "l2": "Disparition",
+          "l3": "Disparition",
+          "l4": "Incident",
+          "l5": "Siphon",
+          "l6": "Sursaut"
+        },
+        "c2": {
+          "l1": "Disparition",
+          "l2": "Incident",
+          "l3": "Incident",
+          "l4": "Fragmentation",
+          "l5": "Siphon",
+          "l6": "Sursaut"
+        },
+        "c3": {
+          "l1": "Incident",
+          "l2": "Incident",
+          "l3": "Fragmentation",
+          "l4": "Siphon",
+          "l5": "Sursaut",
+          "l6": "Désorientation"
+        },
+        "c4": {
+          "l1": "Incident",
+          "l2": "Fragmentation",
+          "l3": "Siphon",
+          "l4": "Sursaut",
+          "l5": "Désorientation",
+          "l6": "Défaillance"
+        },
+        "c5": {
+          "l1": "Siphon",
+          "l2": "Siphon",
+          "l3": "Sursaut",
+          "l4": "Désorientation",
+          "l5": "Désagrégation",
+          "l6": "Défaillance"
+        },
+        "c6": {
+          "l1": "Sursaut",
+          "l2": "Sursaut",
+          "l3": "Désorientation",
+          "l4": "Désagrégation",
+          "l5": "Défaillance",
+          "l6": "Défaillance"
+        }
+      },
+      "relance": {
+        "label": "",
+        "value": false
+      },
+      "maxeffets": {
+        "label": "",
+        "value": true,
+        "max": 5
+      },
+      "armedistance": {
+        "label": "",
+        "value": false
+      },
+      "jet": {
+        "aspects": {},
+        "c1": "hargne",
+        "c2": "sangFroid"
+      }
+    },
+    "key": "contrecoups",
+    "softlock": true
+  },
+  "plusespoir": {
+    "label": "Il n'y a plus d'espoir",
+    "description": "<p style=\"text-align:justify\">En investissant la méta-armure, le chevalier ne possède plus que 10 points d’espoir. Ces points d’espoir ne peuvent être perdus que dans le cas d’une mise à l’agonie liée à la première spécificité des armures de 4e génération (rappel : sur une mise à l’agonie, le chevalier doit réussir un test base Sang-froid combo Hargne pour rester vivant et perdre uniquement 1D6 points d’espoir). Toutes les autres pertes éventuelles sont simplement ignorées par le chevalier. En contrepartie, le chevalier ne peut plus récupérer de points d’espoir, de quelque manière que ce soit et ne peut plus activer de mode héroïque (mais il peut toujours recevoir des points d’héroïsme et les dépenser autrement).</p>",
+    "espoir": {
+      "base": 10,
+      "recuperation": {
+        "label": "",
+        "value": false
+      },
+      "perte": {
+        "label": "",
+        "value": false
+      }
+    },
+    "evolutions": {
+      "espoir": {
+        "base": 10,
+        "recuperation": {
+          "label": "",
+          "value": false
+        },
+        "perte": {
+          "label": "",
+          "value": false
+        }
+      }
+    },
+    "key": "plusespoir",
+    "softlock": true
+  },
+  "impregnation": {
+    "label": "Imprégnation",
+    "description": "<p style=\"text-align:justify\">L’IA risque de subir l’imprégnation et donc de ne plus pouvoir être dépossédée du corps dans lequel elle s’incarne. Ces points se cumulent.</p><p style=text-align:justify;>Après la première fois, le chevalier doit effectuer un test pour déployer son IA avec le risque minimal. La difficulté du test est égale au nombre de points cumulés par le MJ.</p><p style=text-align:justify;>Des points peuvent être enlevés à ce total si le chevalier prend soin de son IA ou si l’IA n’est pas déployée pendant un certain temps, à la discrétion du MJ. Les points cumulés sont remis à 0 à chaque début de mission ou d’intermission.</p>",
+    "aspects": {},
+    "jets": {
+      "c1a": "sangFroid",
+      "c2a": "technique",
+      "c1b": "hargne",
+      "c2b": "technique"
+    },
+    "evolutions": {
+      "aspects": {},
+      "jets": {
+        "c1a": "sangFroid",
+        "c2a": "technique",
+        "c1b": "hargne",
+        "c2b": "technique"
+      }
+    },
+    "key": "impregnation",
+    "softlock": true
+  },
+  "lenteetlourde": {
+    "label": "Lente et lourde",
+    "description": "<p style=\"text-align:justify\">La méta-armure Paladin ne peut pas utiliser de module de course, de module de déplacement silencieux ou de module de saut. En outre, le MJ peut toujours décider qu’il est risqué pour l’armure de passer sur certains types de sols, trop fragiles. Enfin, la difficulté des tests base Discrétion et Déplacement avec la méta-armure Paladin est toujours augmentée d’un niveau (si la difficulté de base est facile (1), la difficulté passe à faisable (2)).</p>",
+    "evolutions": {
+      "delete": {
+        "label": "",
+        "value": false
+      }
+    },
+    "key": "lenteetlourde",
+    "softlock": true
+  },
+  "apeiron": {
+    "label": "Noyau Apeiron",
+    "description": "<p style=\"text-align:justify\">Tant qu’il porte la méta-armure, le personnage augmente son total de points d’espoir. De plus, toutes ses pertes d’espoir (en dehors des pertes causées par les capacités de la méta-armure) sont réduites. L’effet est cumulable avec d’autres avantages ou effets.</p>",
+    "espoir": {
+      "bonus": 15,
+      "reduction": {
+        "value": 1
+      }
+    },
+    "evolutions": {
+      "espoir": {
+        "bonus": 15,
+        "reduction": {
+          "value": 1
+        }
+      }
+    },
+    "key": "apeiron",
+    "softlock": true
+  },
+  "porteurlumiere": {
+    "label": "Porteur de lumière",
+    "bonus": {
+      "effets": {
+        "raw": [
+          "antianatheme",
+          "tenebricide"
+        ],
+        "liste": [],
+        "custom": []
+      }
+    },
+    "evolutions": {
+      "bonus": {
+        "effets": {
+          "raw": [
+            "antianatheme",
+            "tenebricide"
+          ],
+          "liste": [],
+          "custom": []
+        }
+      }
+    },
+    "description": "<p style=\"text-align:justify\">Toutes les attaques portées par le chevalier en méta-armure reçoivent des effets bonus.</p>",
+    "key": "porteurlumiere",
+    "softlock": true
+  },
+  "recolteflux": {
+    "label": "Récolte du flux",
+    "description": "<p style=\"text-align:justify\">En combat, contre des créatures de l'Anathème ou des désespérés et uniquement contre ces types d'ennemis, un chevalier en méta-armure Psion peut récolter du flux. Au début d'une phase de conflit, le chevalier reçoit automatiquement </b>2 points de flux</b> et, à chaque tour suivant, il en reçoit </b>1</b> (pour les symboliser, prenez des pièces ou des pions). Si un ennemi à portée moyenne est tué par un chevalier de la coterie ou par un allié (donc pas par une créature de l'Anathème ou un désespéré), le chevalier en méta-armure Psion reçoit automatiquement le nombre de points de flux suivants par ennemi tué :</p><p style=text-align:justify;>Il est à noter que le flux peut être récolté en dehors d'une phase de conflit si le chevalier est en présence d'une ou plusieurs créatures de l'Anathème à une certaine portée de l'armure. On considère alors qu'il reçoit des points de flux par créature présente à portée, dans ume certaine limite, durant la scène. Ces points ne sont reçus qu'une fois par scène.</p><p style=text-align:justify;>Le flux récolté par le chevalier lors d'un combat lui permet d'utiliser les modes ci-dessous qui ont un coût en flux. Attention : Chacun des modes décrits ne peut être utilisé que contre les créatures de l'Anathème ou contre les désespérés.</p><p style=text-align:justify;><b>Attention</b> : Si à la fin d'une scène ou d'une phase de conflit le flux absorbé n'a pas été utilisé, il est définitivement perdu.</p>",
+    "conflit": {
+      "base": 2,
+      "tour": 1,
+      "hostile": 2,
+      "salopard": 3,
+      "patron": 4,
+      "portee": "moyenne"
+    },
+    "horsconflit": {
+      "base": 1,
+      "portee": "moyenne",
+      "limite": 10
+    },
+    "evolutions": {
+      "conflit": {
+        "base": 2,
+        "tour": 1,
+        "hostile": 2,
+        "salopard": 3,
+        "patron": 4,
+        "portee": "moyenne"
+      },
+      "horsconflit": {
+        "base": 1,
+        "portee": "moyenne",
+        "limite": 10
+      }
+    },
+    "key": "recolteflux",
+    "softlock": true
+  }
+}
