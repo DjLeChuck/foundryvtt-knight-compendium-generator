@@ -121,4 +121,13 @@ abstract class AbstractCompendiumCommand extends Command
             default => throw new \InvalidArgumentException(sprintf('Portée "%s" invalide', $value)),
         };
     }
+
+    protected function getWeaponType(string $value): string
+    {
+        return match ($value) {
+            'Arme à distance' => 'distance',
+            'Arme de contact' => 'contact',
+            default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
+        };
+    }
 }

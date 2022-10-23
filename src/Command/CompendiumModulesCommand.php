@@ -52,6 +52,8 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
                 $levelData['system']['energie']['supplementaire'] = 0;
 
                 $this->setEnergy($level, $levelData);
+                $this->setWeaponData($level, $levelData);
+                $this->setEffects($level, $levelData);
 
                 $items[] = $this->serializeData($levelData);
             }
@@ -154,5 +156,32 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         }
 
         return $label;
+    }
+
+    private function setWeaponData(array $data, array &$itemData): void
+    {
+        if (null === $data['reach']) {
+            return;
+        }
+
+        $itemData['system']['arme']['has'] = true;
+        $itemData['system']['arme']['portee'] = $this->getReach($data['reach']);
+        $itemData['system']['arme']['type'] = 'contact' === $itemData['system']['arme']['portee'] ? 'contact' : 'distance';
+        $itemData['system']['arme']['degats']['dice'] = $data['damage_dice'];
+        $itemData['system']['arme']['degats']['fixe'] = $data['damage_bonus'];
+        $itemData['system']['arme']['violence']['dice'] = $data['violence_dice'];
+        $itemData['system']['arme']['violence']['fixe'] = $data['violence_bonus'];
+    }
+
+    private function setEffects(array $data, array &$itemData): void
+    {
+        foreach ($data['effects'] as $effect) {
+            // On ajoute les effets que s'il n'y a pas de choix à faire
+            if (0 !== $effect['choice_number']) {
+                continue;
+            }
+
+            // @todo
+        }
     }
 }

@@ -78,15 +78,6 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
         return 'grenade-intelligente' === $slug;
     }
 
-    private function getWeaponType(string $value): string
-    {
-        return match ($value) {
-            'Arme à distance' => 'distance',
-            'Arme de contact' => 'contact',
-            default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
-        };
-    }
-
     private function addEffects(array $effects, array &$itemData): void
     {
         foreach ($effects as $effect) {
