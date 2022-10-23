@@ -7,10 +7,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 #[AsCommand(
     name: 'app:compendium:modules',
@@ -21,63 +17,48 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $modules = [];
+        $items = [];
 
         foreach ($this->api->get('module') as $data) {
             $apiData = $this->api->get('module/'.$data['id']);
             $slotData = current($apiData['slots']);
             $nbLevels = \count($apiData['levels']);
-            $moduleData = [
-                'name'   => $apiData['name'],
-                'type'   => 'module',
-                'img'    => $this->getImg($apiData['slug']),
-                'system' => [
-                    'categorie' => $this->getCategory($apiData['category']['name']),
-                    'slots'     => [
-                        'tete'        => false !== $slotData ? $slotData['head'] : 0,
-                        'brasGauche'  => false !== $slotData ? $slotData['left_arm'] : 0,
-                        'brasDroit'   => false !== $slotData ? $slotData['right_arm'] : 0,
-                        'torse'       => false !== $slotData ? $slotData['torso'] : 0,
-                        'jambeGauche' => false !== $slotData ? $slotData['left_leg'] : 0,
-                        'jambeDroite' => false !== $slotData ? $slotData['right_leg'] : 0,
-                    ],
-                ],
-            ];
+            $itemData = $this->getBaseData();
+            $itemData['name'] = $apiData['name'];
+            $itemData['img'] = $this->getImg($apiData['slug']) ?? $itemData['img'];
+            $itemData['system']['categorie'] = $this->getCategory($apiData['category']['name']);
+            $itemData['system']['slots']['tete'] = false !== $slotData ? $slotData['head'] : 0;
+            $itemData['system']['slots']['brasGauche'] = false !== $slotData ? $slotData['left_arm'] : 0;
+            $itemData['system']['slots']['brasDroit'] = false !== $slotData ? $slotData['right_arm'] : 0;
+            $itemData['system']['slots']['torse'] = false !== $slotData ? $slotData['torso'] : 0;
+            $itemData['system']['slots']['jambeGauche'] = false !== $slotData ? $slotData['left_leg'] : 0;
+            $itemData['system']['slots']['jambeDroite'] = false !== $slotData ? $slotData['right_leg'] : 0;
 
             foreach ($apiData['levels'] as $level) {
-                $levelData = $moduleData;
+                $levelData = $itemData;
 
                 if (1 < $nbLevels) {
                     $levelData['name'] .= ' niv. '.$level['level'];
                 }
 
                 $levelData['_id'] = $this->generateId($levelData['name']);
-                $levelData['system'] = array_merge($levelData['system'], [
-                    'description' => $this->cleanDescription($level['description']),
-                    'prix'        => $level['cost'],
-                    'activation'  => $this->getActivation($level['activation']),
-                    'rarete'      => $this->getRarity($level['rarity']),
-                    'portee'      => $this->getReach($level['reach']),
-                    'energie'     => [
-                        'tour'           => ['value' => 0, 'label' => 'Tour'],
-                        'minute'         => ['value' => 0, 'label' => 'Minute'],
-                        'supplementaire' => 0,
-                    ],
-                ]);
+                $levelData['system']['description'] = $this->cleanDescription($level['description']);
+                $levelData['system']['prix'] = $level['cost'];
+                $levelData['system']['activation'] = $this->getActivation($level['activation']);
+                $levelData['system']['rarete'] = $this->getRarity($level['rarity']);
+                $levelData['system']['portee'] = $this->getReach($level['reach']);
+                $levelData['system']['energie']['tour'] = ['value' => 0, 'label' => 'Tour'];
+                $levelData['system']['energie']['minute'] = ['value' => 0, 'label' => 'Minute'];
+                $levelData['system']['energie']['supplementaire'] = 0;
 
                 $this->setEnergy($level, $levelData);
 
-                $modules[] = $this->serializer->serialize(
-                    $levelData,
-                    JsonEncoder::FORMAT,
-                    [JsonEncode::OPTIONS => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES]
-                );
+                $items[] = $this->serializeData($levelData);
             }
         }
 
         try {
-            $filesystem = new Filesystem();
-            $filesystem->dumpFile('var/modules.db', implode(PHP_EOL, $modules));
+            $this->dumpCompendium($items);
 
             $io->success('Compendium généré.');
         } catch (\Throwable $e) {
@@ -85,6 +66,11 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         }
 
         return Command::SUCCESS;
+    }
+
+    protected function getType(): string
+    {
+        return 'module';
     }
 
     private function getCategory(string $value): string
@@ -115,11 +101,6 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         };
     }
 
-    protected function getType(): string
-    {
-        return 'module';
-    }
-
     private function getActivation(?string $value): ?string
     {
         return match ($value) {
@@ -133,19 +114,17 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
 
     private function getRarity(?string $value): ?string
     {
-        if (null === $value) {
-            return null;
-        }
-
-        return [
-                   'Standard' => 'standard',
-                   'Avancé'   => 'avance',
-                   'Rare'     => 'rare',
-                   'Prestige' => 'prestige',
-               ][$value];
+        return match ($value) {
+            null => null,
+            'Standard' => 'standard',
+            'Avancé' => 'avance',
+            'Rare' => 'rare',
+            'Prestige' => 'prestige',
+            default => throw new \InvalidArgumentException(sprintf('Rareté "%s" invalide', $value)),
+        };
     }
 
-    private function setEnergy(array $data, array &$moduleData): void
+    private function setEnergy(array $data, array &$itemData): void
     {
         static $rows = [
             0 => 'tour',
@@ -158,9 +137,9 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
             $label = $this->fixEnergyLabel($label);
 
             if (2 === $index) {
-                $moduleData['system']['energie'][$rows[$index]] = $data['energy'];
+                $itemData['system']['energie'][$rows[$index]] = $data['energy'];
             } else {
-                $moduleData['system']['energie'][$rows[$index]] = [
+                $itemData['system']['energie'][$rows[$index]] = [
                     'value' => $data['energy'],
                     'label' => $label,
                 ];

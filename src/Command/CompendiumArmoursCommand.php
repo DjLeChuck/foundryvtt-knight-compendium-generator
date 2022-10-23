@@ -17,42 +17,42 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
-        $armours = [];
+        $items = [];
 
         foreach ($this->getList() as $data) {
             $apiData = $this->getItem($data['id']);
-            $armourData = $this->getBaseData();
-            $armourData['_id'] = $this->generateId($apiData['name']);
-            $armourData['name'] = $apiData['name'];
-            $armourData['img'] = $this->getImg($apiData['slug']) ?? $armourData['img'];
-            $armourData['system']['description'] = $this->getArmourDescription($apiData);
-            $armourData['system']['generation'] = $apiData['generation'];
-            $armourData['system']['armure']['value'] = $apiData['armour_points'];
-            $armourData['system']['armure']['base'] = $apiData['armour_points'];
-            $armourData['system']['champDeForce']['base'] = $apiData['force_field'];
-            $armourData['system']['energie']['value'] = $apiData['energy_points'];
-            $armourData['system']['energie']['base'] = $apiData['energy_points'];
-            $armourData['system']['slots']['tete']['value'] = $apiData['slot_head'];
-            $armourData['system']['slots']['brasGauche']['value'] = $apiData['slot_left_arm'];
-            $armourData['system']['slots']['brasDroit']['value'] = $apiData['slot_right_arm'];
-            $armourData['system']['slots']['torse']['value'] = $apiData['slot_torso'];
-            $armourData['system']['slots']['jambeGauche']['value'] = $apiData['slot_left_leg'];
-            $armourData['system']['slots']['jambeDroite']['value'] = $apiData['slot_right_leg'];
-            $armourData['system']['evolutions']['paliers'] = \count($apiData['evolutions']);
+            $itemData = $this->getBaseData();
+            $itemData['_id'] = $this->generateId($apiData['name']);
+            $itemData['name'] = $apiData['name'];
+            $itemData['img'] = $this->getImg($apiData['slug']) ?? $itemData['img'];
+            $itemData['system']['description'] = $this->getArmourDescription($apiData);
+            $itemData['system']['generation'] = $apiData['generation'];
+            $itemData['system']['armure']['value'] = $apiData['armour_points'];
+            $itemData['system']['armure']['base'] = $apiData['armour_points'];
+            $itemData['system']['champDeForce']['base'] = $apiData['force_field'];
+            $itemData['system']['energie']['value'] = $apiData['energy_points'];
+            $itemData['system']['energie']['base'] = $apiData['energy_points'];
+            $itemData['system']['slots']['tete']['value'] = $apiData['slot_head'];
+            $itemData['system']['slots']['brasGauche']['value'] = $apiData['slot_left_arm'];
+            $itemData['system']['slots']['brasDroit']['value'] = $apiData['slot_right_arm'];
+            $itemData['system']['slots']['torse']['value'] = $apiData['slot_torso'];
+            $itemData['system']['slots']['jambeGauche']['value'] = $apiData['slot_left_leg'];
+            $itemData['system']['slots']['jambeDroite']['value'] = $apiData['slot_right_leg'];
+            $itemData['system']['evolutions']['paliers'] = \count($apiData['evolutions']);
 
             foreach ($apiData['overdrives'] as $overdrive) {
-                $this->addOverdrive($overdrive['characteristic'], $armourData);
+                $this->addOverdrive($overdrive['characteristic'], $itemData);
             }
 
             foreach ($apiData['evolutions'] as $evolution) {
-                $this->addEvolution($evolution, $armourData);
+                $this->addEvolution($evolution, $itemData);
             }
 
-            $armours[] = $this->serializeData($armourData);
+            $items[] = $this->serializeData($itemData);
         }
 
         try {
-            $this->dumpCompendium($armours);
+            $this->dumpCompendium($items);
 
             $io->success('Compendium généré.');
         } catch (\Throwable $e) {
@@ -81,7 +81,7 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         );
     }
 
-    private function addOverdrive(array $overdrive, array &$armourData): void
+    private function addOverdrive(array $overdrive, array &$itemData): void
     {
         switch ($overdrive['name']) {
             case 'Déplacement':
@@ -148,12 +148,12 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 throw new \InvalidArgumentException(sprintf('Overdrive "%s" non traitable', $overdrive['name']));
         }
 
-        ++$armourData['system']['overdrives'][$aspect]['liste'][$name]['value'];
+        ++$itemData['system']['overdrives'][$aspect]['liste'][$name]['value'];
     }
 
-    private function addEvolution(array $evolution, array &$armourData): void
+    private function addEvolution(array $evolution, array &$itemData): void
     {
-        $armourData['system']['evolutions']['liste'][] = [
+        $itemData['system']['evolutions']['liste'][] = [
             'value'       => $evolution['unlock_at'],
             'description' => $this->cleanDescription($evolution['description']),
             'capacites'   => [],

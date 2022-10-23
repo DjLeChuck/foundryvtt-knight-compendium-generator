@@ -7,10 +7,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Finder\Finder;
-use Symfony\Component\Serializer\Encoder\JsonEncode;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
 
 #[AsCommand(
     name: 'app:compendium:weapons',
@@ -26,16 +22,12 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
         foreach ($this->api->get('weapon') as $data) {
             $apiData = $this->api->get('weapon/'.$data['id']);
             $nbAttacks = \count($apiData['attacks']);
-            $itemData = [
-                'name'   => $apiData['name'],
-                'type'   => 'arme',
-                'img'    => $this->getImg($apiData['slug']),
-                'system' => [
-                    'description' => $this->cleanDescription($apiData['description']),
-                    'type'        => $this->getWeaponType($apiData['category']['name']),
-                    'prix'        => $apiData['cost'],
-                ],
-            ];
+            $itemData = $this->getBaseData();
+            $itemData['name'] = $apiData['name'];
+            $itemData['img'] = $this->getImg($apiData['slug']) ?? $itemData['img'];
+            $itemData['system']['description'] = $this->cleanDescription($apiData['description']);
+            $itemData['system']['type'] = $this->getWeaponType($apiData['category']['name']);
+            $itemData['system']['prix'] = $apiData['cost'];
 
             foreach ($apiData['attacks'] as $attack) {
                 $subItemData = $itemData;
@@ -45,29 +37,20 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
                 }
 
                 $subItemData['_id'] = $this->generateId($subItemData['name']);
-                $subItemData['system'] = array_merge($itemData['system'], [
-                    'portee'   => $this->getReach($attack['reach']),
-                    'degats'   => [
-                        'dice' => $attack['damage_dice'],
-                        'fixe' => $attack['damage_bonus'],
-                    ],
-                    'violence' => [
-                        'dice' => $attack['violence_dice'],
-                        'fixe' => $attack['violence_bonus'],
-                    ],
-                ]);
+                $subItemData['system']['portee'] = $this->getReach($attack['reach']);
+                $subItemData['system']['degats']['dice'] = $attack['damage_dice'];
+                $subItemData['system']['degats']['fixe'] = $attack['damage_bonus'];
+                $subItemData['system']['violence']['dice'] = $attack['violence_dice'];
+                $subItemData['system']['violence']['fixe'] = $attack['violence_bonus'];
 
-                $items[] = $this->serializer->serialize(
-                    $subItemData,
-                    JsonEncoder::FORMAT,
-                    [JsonEncode::OPTIONS => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES]
-                );
+                $this->addEffects($attack['effects'], $subItemData);
+
+                $items[] = $this->serializeData($subItemData);
             }
         }
 
         try {
-            $filesystem = new Filesystem();
-            $filesystem->dumpFile('var/weapons.db', implode(PHP_EOL, $items));
+            $this->dumpCompendium($items);
 
             $io->success('Compendium généré.');
         } catch (\Throwable $e) {
@@ -88,6 +71,79 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
             'Arme à distance' => 'distance',
             'Arme de contact' => 'contact',
             default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
+        };
+    }
+
+    private function addEffects(array $effects, array &$itemData): void
+    {
+        foreach ($effects as $effect) {
+            // Zakarik : "Le Ignore couvert, c'est pas un effet des livres, c'est un effet propre a Knight JDR système, c'est pour ça qu'il n'est pas dans la liste"
+            if ($this->ignoreEffect($effect['effect']['name'])) {
+                continue;
+            }
+
+            $value = $this->getEffect($effect['effect']['slug']);
+
+            if (0 < $effect['effect_level']) {
+                $value .= ' '.$effect['effect_level'];
+            }
+
+            $itemData['system']['effets']['raw'][] = $value;
+        }
+    }
+
+    private function ignoreEffect(string $value): bool
+    {
+        $value = str_replace(' X', '', $value);
+
+        return str_starts_with($value, '[') && str_ends_with($value, ']');
+    }
+
+    private function getEffect(string $value): string
+    {
+        return match ($value) {
+            'anti-anatheme' => 'antianatheme',
+            'anti-vehicule' => 'antivehicule',
+            'artillerie' => 'artillerie',
+            'assassin-x' => 'assassin',
+            'assistance-a-lattaque' => 'assistanceattaque',
+            'barrage-x' => 'barrage',
+            'briser-la-resilience' => 'briserlaresilience',
+            'cadence-x' => 'cadence',
+            'chargeur-x' => 'chargeur',
+            'choc-x' => 'choc',
+            'defense-x' => 'defense',
+            'degats-continus-x' => 'degatscontinus',
+            'demoralisant' => 'demoralisant',
+            'designation' => 'designation',
+            'destructeur' => 'destructeur',
+            'deux-mains' => 'deuxmains',
+            'dispersion-x' => 'dispersion',
+            'en-chaine' => 'enchaine',
+            'esperance' => 'esperance',
+            'fureur' => 'fureur',
+            'ignore-armure' => 'ignorearmure',
+            'ignore-cdf' => 'ignorechampdeforce',
+            'jumele-akimbo' => 'jumeleakimbo',
+            'jumele-ambidextrie' => 'jumeleambidextrie',
+            'leste' => 'leste',
+            'lourd' => 'lourd',
+            'lumiere-x' => 'lumiere',
+            'meurtrier' => 'meurtrier',
+            'obliteration' => 'obliteration',
+            'orfevrerie' => 'orfevrerie',
+            'parasitage-x' => 'parasitage',
+            'penetrant-x' => 'penetrant',
+            'perce-armure-x' => 'percearmure',
+            'precision' => 'precision',
+            'reaction-x' => 'reaction',
+            'silencieux' => 'silencieux',
+            'soumission' => 'soumission',
+            'tenebricide' => 'tenebricide',
+            'tir-en-rafale' => 'tirenrafale',
+            'tir-en-securite' => 'tirensecurite',
+            'ultraviolence' => 'ultraviolence',
+            default => throw new \InvalidArgumentException(sprintf('Effet "%s" invalide', $value)),
         };
     }
 }
