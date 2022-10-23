@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Api;
+use League\CommonMark\ConverterInterface;
+use League\CommonMark\GithubFlavoredMarkdownConverter;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;
@@ -17,11 +19,13 @@ abstract class AbstractCompendiumCommand extends Command
 {
     protected Api $api;
     protected SerializerInterface $serializer;
+    protected ConverterInterface $converter;
 
     public function __construct(Api $api, SerializerInterface $serializer)
     {
         $this->api = $api;
         $this->serializer = $serializer;
+        $this->converter = new GithubFlavoredMarkdownConverter();
 
         parent::__construct();
     }
@@ -65,7 +69,12 @@ abstract class AbstractCompendiumCommand extends Command
 
     protected function getBaseData(): array
     {
-        return include(sprintf('var/data/%s_tpl.php', $this->getType()));
+        return json_decode(
+            file_get_contents(sprintf('var/data/%s_tpl.json', $this->getType())),
+            true,
+            512,
+            JSON_THROW_ON_ERROR
+        );
     }
 
     protected function getImg(string $slug): ?string
@@ -90,23 +99,14 @@ abstract class AbstractCompendiumCommand extends Command
 
     protected function cleanDescription(string $value): string
     {
-        $value = preg_replace('`\[(.*)]\(.*\)`', '$1', $value);
-        $value = preg_replace('`_(.*)_`', '<em>$1</em>', $value);
+        $value = $this->converter->convert($value)->getContent();
 
-        return str_replace("\r\n", '<br />', $value);
+        return preg_replace('#<a\s.*?>(.*?)</a>#is', '<em>\1</em>', $value);
     }
 
     protected function generateId($input): string
     {
-        // Create a raw binary sha256 hash and base64 encode it.
-        $hash_base64 = base64_encode(hash('sha256', $input, true));
-        // Replace non-urlsafe chars to make the string urlsafe.
-        $hashUrlsafe = strtr($hash_base64, '+/', '-_');
-        // Trim base64 padding characters from the end.
-        $hashUrlsafe = rtrim($hashUrlsafe, '=');
-
-        // Shorten the string before returning.
-        return substr($hashUrlsafe, 0, 16);
+        return hash('crc32', $input).hash('crc32', strrev($input));
     }
 
     protected function getReach(?string $value): string
