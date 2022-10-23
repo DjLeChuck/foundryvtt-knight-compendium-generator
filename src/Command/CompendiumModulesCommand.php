@@ -55,7 +55,7 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
                 $this->setWeaponData($level, $levelData);
                 $this->setEffects($level, $levelData);
 
-                $items[] = $this->serializeData($levelData);
+                $items[$levelData['system']['rarete']][] = $this->serializeData($levelData);
             }
         }
 
@@ -111,18 +111,6 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
             'Combat' => 'combat',
             'Tour complet' => 'tourComplet',
             default => throw new \InvalidArgumentException(sprintf('Activation "%s" invalide', $value)),
-        };
-    }
-
-    private function getRarity(?string $value): ?string
-    {
-        return match ($value) {
-            null => null,
-            'Standard' => 'standard',
-            'Avancé' => 'avance',
-            'Rare' => 'rare',
-            'Prestige' => 'prestige',
-            default => throw new \InvalidArgumentException(sprintf('Rareté "%s" invalide', $value)),
         };
     }
 

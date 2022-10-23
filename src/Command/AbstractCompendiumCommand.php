@@ -58,13 +58,25 @@ abstract class AbstractCompendiumCommand extends Command
         );
     }
 
-    protected function dumpCompendium(array $dataset): void
+    protected function dumpCompendium(array $dataset, bool $isMultiple = true): void
     {
         $filesystem = new Filesystem();
-        $filesystem->dumpFile(
-            sprintf('var/%s.db', $this->getPluralizedType()),
-            implode(PHP_EOL, $dataset)
-        );
+
+        if (!$isMultiple) {
+            $filesystem->dumpFile(
+                sprintf('var/%s.db', $this->getPluralizedType()),
+                implode(PHP_EOL, $dataset)
+            );
+
+            return;
+        }
+
+        foreach ($dataset as $pack => $items) {
+            $filesystem->dumpFile(
+                sprintf('var/%s-%s.db', $this->getPluralizedType(), $pack),
+                implode(PHP_EOL, $items)
+            );
+        }
     }
 
     protected function getBaseData(): array
@@ -128,6 +140,19 @@ abstract class AbstractCompendiumCommand extends Command
             'Arme à distance' => 'distance',
             'Arme de contact' => 'contact',
             default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
+        };
+    }
+
+    protected function getRarity(?string $value): ?string
+    {
+        return match ($value) {
+            null => null,
+            'Standard' => 'standard',
+            'Avancé' => 'avance',
+            'Rare' => 'rare',
+            'Prestige' => 'prestige',
+            // 'Relique d\'espoir' => '???',
+            default => throw new \InvalidArgumentException(sprintf('Rareté "%s" invalide', $value)),
         };
     }
 }

@@ -25,6 +25,13 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
                 continue;
             }
 
+            try {
+                $this->getRarity($apiData['rarity']);
+            } catch (\Throwable) {
+                // Pour le moment on ignore les erreurs de rareté
+                continue;
+            }
+
             $nbAttacks = \count($apiData['attacks']);
             $itemData = $this->getBaseData();
             $itemData['name'] = $apiData['name'];
@@ -32,6 +39,7 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
             $itemData['system']['description'] = $this->cleanDescription($apiData['description']);
             $itemData['system']['type'] = $this->getWeaponType($apiData['category']['name']);
             $itemData['system']['prix'] = $apiData['cost'];
+            $itemData['system']['rarete'] = $this->getRarity($apiData['rarity']);
 
             // Les améliorations sont à acheter, donc pas dans le compendium de base...
             // $this->addEnhancements($apiData['enhancements'], $itemData);
@@ -52,7 +60,7 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
 
                 $this->addEffects($attack['effects'], $subItemData);
 
-                $items[] = $this->serializeData($subItemData);
+                $items[$itemData['system']['rarete']][] = $this->serializeData($subItemData);
             }
         }
 

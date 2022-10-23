@@ -48,7 +48,7 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
                 $this->addEvolution($evolution, $itemData);
             }
 
-            $items[] = $this->serializeData($itemData);
+            $items[$this->getArmourPack($apiData['slug'])][] = $this->serializeData($itemData);
         }
 
         try {
@@ -65,6 +65,16 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
     protected function getType(): string
     {
         return 'armour';
+    }
+
+    private function getArmourPack(string $value): string
+    {
+        return match ($value) {
+            'warrior', 'barbarian', 'wizard', 'bard', 'ranger', 'rogue', 'warmaster', 'priest', 'paladin' => 'base',
+            'psion', 'necromancer', 'sorcerer', 'monk' => '2038',
+            'druid' => 'codex',
+            'warlock', 'berserk', 'shaman' => 'atlas',
+        };
     }
 
     private function getArmourDescription(array $data): string
