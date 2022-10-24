@@ -154,13 +154,9 @@ abstract class AbstractCompendiumCommand extends Command
         };
     }
 
-    protected function getWeaponType(string $value): string
+    protected function getWeaponTypeFromReach(string $reach): string
     {
-        return match ($value) {
-            'Arme à distance' => 'distance',
-            'Arme de contact' => 'contact',
-            default => throw new \InvalidArgumentException(sprintf('Type "%s" invalide', $value)),
-        };
+        return 'contact' === $reach ? 'contact' : 'distance';
     }
 
     protected function getRarity(?string $value): ?string

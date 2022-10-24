@@ -30,7 +30,6 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
             $itemData['name'] = $apiData['name'];
             $itemData['img'] = $this->getImg($apiData['slug']) ?? $itemData['img'];
             $itemData['system']['description'] = $this->cleanDescription($apiData['description']);
-            $itemData['system']['type'] = $this->getWeaponType($apiData['category']['name']);
             $itemData['system']['prix'] = $apiData['cost'];
             $itemData['system']['rarete'] = $this->getRarity($apiData['rarity']);
 
@@ -46,6 +45,7 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
 
                 $subItemData['_id'] = $this->generateId($subItemData['name']);
                 $subItemData['system']['portee'] = $this->getReach($attack['reach']);
+                $subItemData['system']['type'] = $this->getWeaponTypeFromReach($subItemData['system']['portee']);
                 $subItemData['system']['degats']['dice'] = $attack['damage_dice'];
                 $subItemData['system']['degats']['fixe'] = $attack['damage_bonus'];
                 $subItemData['system']['violence']['dice'] = $attack['violence_dice'];

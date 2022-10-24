@@ -178,7 +178,7 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
 
         $itemData['system']['arme']['has'] = true;
         $itemData['system']['arme']['portee'] = $this->getReach($data['reach']);
-        $itemData['system']['arme']['type'] = 'contact' === $itemData['system']['arme']['portee'] ? 'contact' : 'distance';
+        $itemData['system']['arme']['type'] = $this->getWeaponTypeFromReach($itemData['system']['arme']['portee']);
         $itemData['system']['arme']['degats']['dice'] = $data['damage_dice'];
         $itemData['system']['arme']['degats']['fixe'] = $data['damage_bonus'];
         $itemData['system']['arme']['violence']['dice'] = $data['violence_dice'];
