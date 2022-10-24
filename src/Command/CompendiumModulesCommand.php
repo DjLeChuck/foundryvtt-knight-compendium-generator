@@ -220,7 +220,7 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
                 $itemData['system']['arme']['effets']['custom'][] = $this->buildCustomEffect(
                     $effect,
                     'violence',
-                    $effect['damage']
+                    $effect['violence']
                 );
             }
         }
