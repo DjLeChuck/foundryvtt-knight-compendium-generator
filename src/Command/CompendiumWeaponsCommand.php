@@ -25,13 +25,6 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
                 continue;
             }
 
-            try {
-                $this->getRarity($apiData['rarity']);
-            } catch (\Throwable) {
-                // Pour le moment on ignore les erreurs de rareté
-                continue;
-            }
-
             $nbAttacks = \count($apiData['attacks']);
             $itemData = $this->getBaseData();
             $itemData['name'] = $apiData['name'];

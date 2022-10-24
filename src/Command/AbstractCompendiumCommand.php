@@ -151,7 +151,7 @@ abstract class AbstractCompendiumCommand extends Command
             'Avancé' => 'avance',
             'Rare' => 'rare',
             'Prestige' => 'prestige',
-            // 'Relique d\'espoir' => '???',
+            'Relique d\'espoir' => 'espoir',
             default => throw new \InvalidArgumentException(sprintf('Rareté "%s" invalide', $value)),
         };
     }
