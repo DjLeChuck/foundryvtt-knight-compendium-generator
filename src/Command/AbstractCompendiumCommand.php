@@ -21,6 +21,8 @@ abstract class AbstractCompendiumCommand extends Command
     protected Api $api;
     protected SerializerInterface $serializer;
     protected ConverterInterface $converter;
+    protected ?array $itemTemplate = null;
+    protected ?array $customEffectTemplate = null;
 
     public function __construct(Api $api, SerializerInterface $serializer)
     {
@@ -101,12 +103,30 @@ abstract class AbstractCompendiumCommand extends Command
 
     protected function getBaseData(): array
     {
-        return json_decode(
-            file_get_contents(sprintf('var/data/%s_tpl.json', $this->getType())),
-            true,
-            512,
-            JSON_THROW_ON_ERROR
-        );
+        if (null === $this->itemTemplate) {
+            $this->itemTemplate = json_decode(
+                file_get_contents(sprintf('var/data/%s_tpl.json', $this->getType())),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        }
+
+        return $this->itemTemplate;
+    }
+
+    protected function getCustomEffectTemplate(): array
+    {
+        if (null === $this->customEffectTemplate) {
+            $this->customEffectTemplate = json_decode(
+                file_get_contents('var/data/custom_effect_tpl.json'),
+                true,
+                512,
+                JSON_THROW_ON_ERROR
+            );
+        }
+
+        return $this->customEffectTemplate;
     }
 
     protected function getImg(string $slug): ?string
@@ -169,6 +189,61 @@ abstract class AbstractCompendiumCommand extends Command
             'Prestige' => 'prestige',
             'Relique d\'espoir' => 'espoir',
             default => throw new \InvalidArgumentException(sprintf('Rareté "%s" invalide', $value)),
+        };
+    }
+
+    protected function ignoreEffect(string $value): bool
+    {
+        $value = str_replace(' X', '', $value);
+
+        return str_starts_with($value, '[') && str_ends_with($value, ']');
+    }
+
+    protected function getEffect(string $value): string
+    {
+        return match ($value) {
+            'anti-anatheme' => 'antianatheme',
+            'anti-vehicule' => 'antivehicule',
+            'artillerie' => 'artillerie',
+            'assassin-x' => 'assassin',
+            'assistance-a-lattaque' => 'assistanceattaque',
+            'barrage-x' => 'barrage',
+            'briser-la-resilience' => 'briserlaresilience',
+            'cadence-x' => 'cadence',
+            'chargeur-x' => 'chargeur',
+            'choc-x' => 'choc',
+            'defense-x' => 'defense',
+            'degats-continus-x' => 'degatscontinus',
+            'demoralisant' => 'demoralisant',
+            'designation' => 'designation',
+            'destructeur' => 'destructeur',
+            'deux-mains' => 'deuxmains',
+            'dispersion-x' => 'dispersion',
+            'en-chaine' => 'enchaine',
+            'esperance' => 'esperance',
+            'fureur' => 'fureur',
+            'ignore-armure' => 'ignorearmure',
+            'ignore-cdf' => 'ignorechampdeforce',
+            'jumele-akimbo' => 'jumeleakimbo',
+            'jumele-ambidextrie' => 'jumeleambidextrie',
+            'leste' => 'leste',
+            'lourd' => 'lourd',
+            'lumiere-x' => 'lumiere',
+            'meurtrier' => 'meurtrier',
+            'obliteration' => 'obliteration',
+            'orfevrerie' => 'orfevrerie',
+            'parasitage-x' => 'parasitage',
+            'penetrant-x' => 'penetrant',
+            'perce-armure-x' => 'percearmure',
+            'precision' => 'precision',
+            'reaction-x' => 'reaction',
+            'silencieux' => 'silencieux',
+            'soumission' => 'soumission',
+            'tenebricide' => 'tenebricide',
+            'tir-en-rafale' => 'tirenrafale',
+            'tir-en-securite' => 'tirensecurite',
+            'ultraviolence' => 'ultraviolence',
+            default => throw new \InvalidArgumentException(sprintf('Effet "%s" invalide', $value)),
         };
     }
 }

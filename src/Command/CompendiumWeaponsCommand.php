@@ -124,61 +124,6 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
         }
     }
 
-    private function ignoreEffect(string $value): bool
-    {
-        $value = str_replace(' X', '', $value);
-
-        return str_starts_with($value, '[') && str_ends_with($value, ']');
-    }
-
-    private function getEffect(string $value): string
-    {
-        return match ($value) {
-            'anti-anatheme' => 'antianatheme',
-            'anti-vehicule' => 'antivehicule',
-            'artillerie' => 'artillerie',
-            'assassin-x' => 'assassin',
-            'assistance-a-lattaque' => 'assistanceattaque',
-            'barrage-x' => 'barrage',
-            'briser-la-resilience' => 'briserlaresilience',
-            'cadence-x' => 'cadence',
-            'chargeur-x' => 'chargeur',
-            'choc-x' => 'choc',
-            'defense-x' => 'defense',
-            'degats-continus-x' => 'degatscontinus',
-            'demoralisant' => 'demoralisant',
-            'designation' => 'designation',
-            'destructeur' => 'destructeur',
-            'deux-mains' => 'deuxmains',
-            'dispersion-x' => 'dispersion',
-            'en-chaine' => 'enchaine',
-            'esperance' => 'esperance',
-            'fureur' => 'fureur',
-            'ignore-armure' => 'ignorearmure',
-            'ignore-cdf' => 'ignorechampdeforce',
-            'jumele-akimbo' => 'jumeleakimbo',
-            'jumele-ambidextrie' => 'jumeleambidextrie',
-            'leste' => 'leste',
-            'lourd' => 'lourd',
-            'lumiere-x' => 'lumiere',
-            'meurtrier' => 'meurtrier',
-            'obliteration' => 'obliteration',
-            'orfevrerie' => 'orfevrerie',
-            'parasitage-x' => 'parasitage',
-            'penetrant-x' => 'penetrant',
-            'perce-armure-x' => 'percearmure',
-            'precision' => 'precision',
-            'reaction-x' => 'reaction',
-            'silencieux' => 'silencieux',
-            'soumission' => 'soumission',
-            'tenebricide' => 'tenebricide',
-            'tir-en-rafale' => 'tirenrafale',
-            'tir-en-securite' => 'tirensecurite',
-            'ultraviolence' => 'ultraviolence',
-            default => throw new \InvalidArgumentException(sprintf('Effet "%s" invalide', $value)),
-        };
-    }
-
     private function getEnhancementData(string $value): array
     {
         static $enhancements = [

@@ -193,7 +193,49 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
                 continue;
             }
 
-            // @todo
+            if (null !== $effect['effect']) {
+                // Zakarik : "Le Ignore couvert, ce n'est pas un effet des livres, c'est un effet propre à Knight JDR système, c'est pour ça qu'il n'est pas dans la liste"
+                if ($this->ignoreEffect($effect['effect']['name'])) {
+                    continue;
+                }
+
+                $value = $this->getEffect($effect['effect']['slug']);
+
+                if (0 < $effect['effect_level']) {
+                    $value .= ' '.$effect['effect_level'];
+                }
+
+                $itemData['system']['arme']['effets']['raw'][] = $value;
+            }
+
+            if (0 < $effect['damage']) {
+                $itemData['system']['arme']['effets']['custom'][] = $this->buildCustomEffect(
+                    $effect,
+                    'degats',
+                    $effect['damage']
+                );
+            }
+
+            if (0 < $effect['violence']) {
+                $itemData['system']['arme']['effets']['custom'][] = $this->buildCustomEffect(
+                    $effect,
+                    'violence',
+                    $effect['damage']
+                );
+            }
         }
+    }
+
+    private function buildCustomEffect(array $effect, string $type, int $throwValue): array
+    {
+        $baseEffect = $this->getCustomEffectTemplate();
+        $baseEffect[$type]['jet'] = $throwValue;
+
+        if (!empty($effect['effect_condition'])) {
+            $baseEffect[$type]['conditionnel']['has'] = true;
+            $baseEffect[$type]['conditionnel']['condition'] = $effect['effect_condition'];
+        }
+
+        return $baseEffect;
     }
 }
