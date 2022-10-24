@@ -103,7 +103,7 @@ abstract class AbstractCompendiumCommand extends Command
         }
 
         if (\in_array($slug.'.png', $existings, true)) {
-            return sprintf('systems/knight/assets/%s/%s.png', $this->getPluralizedType(), $slug);
+            return sprintf('modules/knight-compendium/assets/%s/%s.png', $this->getPluralizedType(), $slug);
         }
 
         return null;
