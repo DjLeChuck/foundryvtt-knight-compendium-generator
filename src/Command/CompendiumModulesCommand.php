@@ -75,6 +75,30 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         return 'module';
     }
 
+    protected function getEmptyObjectPaths(): array
+    {
+        return [
+            'system.listes', 'system.labels',
+            'system.aspects.chair.liste.deplacement',
+            'system.aspects.chair.liste.force',
+            'system.aspects.chair.liste.endurance',
+            'system.aspects.bete.liste.deplacement',
+            'system.aspects.bete.liste.force',
+            'system.aspects.bete.liste.endurance',
+            'system.aspects.machine.liste.deplacement',
+            'system.aspects.machine.liste.force',
+            'system.aspects.machine.liste.endurance',
+            'system.aspects.dame.liste.deplacement',
+            'system.aspects.dame.liste.force',
+            'system.aspects.dame.liste.endurance',
+            'system.aspects.masque.liste.deplacement',
+            'system.aspects.masque.liste.force',
+            'system.aspects.masque.liste.endurance',
+            'system.pnj.modele.jetSpecial.liste',
+            'system.pnj.liste',
+        ];
+    }
+
     private function getCategory(string $value): string
     {
         return match ($value) {

@@ -73,6 +73,13 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
         return 'weapon';
     }
 
+    protected function getEmptyObjectPaths(): array
+    {
+        return [
+            'system.listes',
+        ];
+    }
+
     private function ignoreWeapon(string $slug): bool
     {
         // Les grenades sont déjà incluses sur les fiches des Chevaliers

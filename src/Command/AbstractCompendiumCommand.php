@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use Adbar\Dot;
 use App\Api;
 use League\CommonMark\ConverterInterface;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
@@ -32,6 +33,8 @@ abstract class AbstractCompendiumCommand extends Command
 
     abstract protected function getType(): string;
 
+    abstract protected function getEmptyObjectPaths(): array;
+
     protected function getPluralizedType(): string
     {
         $inflector = new EnglishInflector();
@@ -49,9 +52,26 @@ abstract class AbstractCompendiumCommand extends Command
         return $this->api->get(sprintf('%s/%u', $this->getType(), $id));
     }
 
+    protected function fixEmptyObjectPaths(array &$data): void
+    {
+        $dot = new Dot($data);
+
+        foreach ($this->getEmptyObjectPaths() as $path) {
+            if (!empty($dot->get($path))) {
+                continue;
+            }
+
+            $dot->set($path, new \stdClass());
+        }
+
+        $data = $dot->all();
+    }
+
     protected function serializeData(array $data): string
     {
-        return $this->serializer->serialize(
+        $this->fixEmptyObjectPaths($data);
+
+        return $this->serializer->encode(
             $data,
             JsonEncoder::FORMAT,
             [JsonEncode::OPTIONS => JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES]

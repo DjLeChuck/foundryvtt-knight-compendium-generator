@@ -33,10 +33,8 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
             $itemData['img'] = $this->getImg($apiData['slug']) ?? $itemData['img'];
             $itemData['system']['description'] = $this->getArmourDescription($apiData);
             $itemData['system']['generation'] = $apiData['generation'];
-            $itemData['system']['armure']['value'] = $apiData['armour_points'];
             $itemData['system']['armure']['base'] = $apiData['armour_points'];
             $itemData['system']['champDeForce']['base'] = $apiData['force_field'];
-            $itemData['system']['energie']['value'] = $apiData['energy_points'];
             $itemData['system']['energie']['base'] = $apiData['energy_points'];
             $itemData['system']['slots']['tete']['value'] = $apiData['slot_head'];
             $itemData['system']['slots']['brasGauche']['value'] = $apiData['slot_left_arm'];
@@ -80,6 +78,32 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
     protected function getType(): string
     {
         return 'armour';
+    }
+
+    protected function getEmptyObjectPaths(): array
+    {
+        return [
+            'system.armure.bonus', 'system.armure.malus',
+            'system.champDeForce.bonus', 'system.champDeForce.malus',
+            'system.energie.bonus', 'system.energie.malus',
+            'system.capacites.liste', 'system.capacites.selected',
+            'system.capacites.base.ghost.bonus.aspects',
+            'system.capacites.base.ghost.evolutions.bonus.aspects',
+            'system.capacites.atlasSpecial.rage.aspects',
+            'system.capacites.atlasSpecial.rage.evolutions.aspects',
+            'system.special.liste', 'system.special.selected',
+            'system.special.atlas.impregnation.aspects',
+            'system.special.atlas.impregnation.evolutions.aspects',
+            'system.special.atlas.contrecoups.jet.aspects',
+            'system.special.atlas.contrecoups.evolutions.jet.aspects',
+            'system.slots.tete.bonus', 'system.slots.tete.malus',
+            'system.slots.torse.bonus', 'system.slots.torse.malus',
+            'system.slots.brasGauche.bonus', 'system.slots.brasGauche.malus',
+            'system.slots.brasDroit.bonus', 'system.slots.brasDroit.malus',
+            'system.slots.jambeGauche.bonus', 'system.slots.jambeGauche.malus',
+            'system.slots.jambeDroite.bonus', 'system.slots.jambeDroite.malus',
+            'system.evolutions.liste', 'system.evolutions.special',
+        ];
     }
 
     private function getArmourPack(string $value): string
