@@ -3109,7 +3109,7 @@
       "paliers": 0,
       "aAcheter": {
         "label": "",
-        "value": true
+        "value": false
       },
       "liste": {},
       "special": {}
