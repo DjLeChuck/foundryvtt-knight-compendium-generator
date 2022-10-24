@@ -44,6 +44,11 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
             $itemData['system']['slots']['jambeDroite']['value'] = $apiData['slot_right_leg'];
             $itemData['system']['evolutions']['paliers'] = \count($apiData['evolutions']);
 
+            // Le ranger doit acheter ses améliorations
+            if ('ranger' === $apiData['slug']) {
+                $itemData['system']['evolutions']['aAcheter']['value'] = true;
+            }
+
             foreach ($apiData['overdrives'] as $overdrive) {
                 $this->addOverdrive($overdrive['characteristic'], $itemData);
             }
