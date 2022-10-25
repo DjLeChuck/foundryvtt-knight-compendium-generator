@@ -82,8 +82,8 @@ class CompendiumWeaponsCommand extends AbstractCompendiumCommand
 
     private function ignoreWeapon(string $slug): bool
     {
-        // Les grenades sont déjà incluses sur les fiches des Chevaliers
-        return 'grenade-intelligente' === $slug;
+        // Les grenades sont déjà incluses sur les fiches des Chevaliers et le Longbow dans l'armure Ranger
+        return \in_array($slug, ['fusil-longbow', 'grenade-intelligente'], true);
     }
 
     private function addEffects(array $effects, array &$itemData): void
