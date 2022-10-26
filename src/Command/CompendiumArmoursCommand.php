@@ -85,6 +85,14 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
         return 'armour';
     }
 
+    protected function serializeData(array $data): string
+    {
+        $serializedData = parent::serializeData($data);
+
+        // Hack pour préserver les clefs en string lors de la sérialization...
+        return preg_replace('`_-_(\d+?)_-_`', '\1', $serializedData);
+    }
+
     protected function getEmptyObjectPaths(): array
     {
         return [
@@ -219,13 +227,18 @@ class CompendiumArmoursCommand extends AbstractCompendiumCommand
 
             foreach ($itemData['system']['capacites']['selected'] as $abilityName => $abilityData) {
                 $data['capacites'][$abilityName] = $abilityData['evolutions'];
+
+                if (($data['capacites'][$abilityName]['activation'] ?? null) && ($abilityData['activation'] ?? null)) {
+                    $data['capacites'][$abilityName]['activation'] = $abilityData['activation'];
+                }
             }
 
             foreach ($itemData['system']['special']['selected'] as $abilityName => $abilityData) {
                 $data['special'][$abilityName] = $abilityData['evolutions'];
             }
 
-            $itemData['system']['evolutions']['liste'][(string) ++$i] = $data;
+            // Hack pour préserver les clefs en string lors de la sérialization...
+            $itemData['system']['evolutions']['liste']['_-_'.$i++.'_-_'] = $data;
         }
     }
 
