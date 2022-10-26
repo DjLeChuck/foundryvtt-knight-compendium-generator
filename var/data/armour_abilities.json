@@ -1495,8 +1495,8 @@
         }
       },
       "canon": {
-        "portee": "distance",
-        "type": "moyenne",
+        "portee": "moyenne",
+        "type": "distance",
         "energie": 1,
         "degats": {
           "dice": 3,
