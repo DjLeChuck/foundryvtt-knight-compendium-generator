@@ -1,0 +1,388 @@
+{
+  "volMarkIV": {
+    "description": "",
+    "noyaux": 0,
+    "activation": "Instantanee",
+    "duree": "Desactivation",
+    "bonus": {
+      "manoeuvrabilite": 3
+    }
+  },
+  "sautMarkIV": {
+    "description": "",
+    "noyaux": 0,
+    "activation": "Instantanee",
+    "duree": "Tour",
+    "resilience": 1
+  },
+  "vagueSoin": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Combat",
+    "duree": "Instantanee",
+    "portee": "Moyenne",
+    "soins": {
+      "sante": 40,
+      "cohesion": 150
+    }
+  },
+  "canonMetatron": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Combat",
+    "degats": {
+      "dice": 6,
+      "fixe": 12
+    },
+    "violence": {
+      "dice": 6,
+      "fixe": 0
+    },
+    "portee": "Moyenne",
+    "effets": {
+      "raw": [
+        "parasitage 2",
+        "degatscontinus 10",
+        "briserlaresilience"
+      ],
+      "custom": [ ]
+    }
+  },
+  "canonNoe": {
+    "description": "",
+    "noyaux": 3,
+    "activation": "Combat",
+    "duree": "Instantanee",
+    "portee": "Longue",
+    "reparations": {
+      "armure": 30,
+      "mechaarmure": {
+        "blindage": 20,
+        "resilience": 1
+      }
+    }
+  },
+  "canonMagma": {
+    "description": "",
+    "noyaux": {
+      "simple": 1,
+      "bande": 4
+    },
+    "activation": "Combat",
+    "degats": {
+      "dice": 8,
+      "fixe": 12
+    },
+    "violence": {
+      "dice": 12,
+      "fixe": 20
+    },
+    "portee": "Longue",
+    "effets": {
+      "raw": [
+        "dispersion 12",
+        "fureur",
+        "antianatheme",
+        "briserlaresilience"
+      ],
+      "custom": [ ]
+    }
+  },
+  "lamesCinetiquesGeantes": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Combat",
+    "degats": {
+      "dice": 10,
+      "fixe": 30
+    },
+    "violence": {
+      "dice": 4,
+      "fixe": 6
+    },
+    "portee": "Contact",
+    "effets": {
+      "raw": [ ],
+      "custom": [ ]
+    },
+    "eff1": {
+      "value": 1,
+      "effets": {
+        "raw": [
+          "penetrant 10"
+        ],
+        "custom": [ ]
+      }
+    },
+    "eff2": {
+      "value": 2,
+      "effets": {
+        "raw": [
+          "ignorechampdeforce"
+        ],
+        "custom": [ ]
+      }
+    }
+  },
+  "mitrailleusesSurtur": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Combat",
+    "degats": {
+      "dice": 2,
+      "fixe": 6
+    },
+    "violence": {
+      "dice": 6,
+      "fixe": 20
+    },
+    "portee": "Moyenne",
+    "effets": {
+      "raw": [
+        "ultraviolence",
+        "demoralisant"
+      ],
+      "custom": [ ]
+    }
+  },
+  "tourellesLasersAutomatisees": {
+    "description": "",
+    "noyaux": 2,
+    "activation": "Deplacement",
+    "degats": {
+      "dice": 6,
+      "fixe": 0
+    },
+    "violence": {
+      "dice": 10,
+      "fixe": 0
+    },
+    "portee": "Courte",
+    "effets": {
+      "raw": [
+        "antianatheme"
+      ],
+      "custom": [ ]
+    }
+  },
+  "missilesJericho": {
+    "description": "",
+    "noyaux": 6,
+    "activation": "Combat",
+    "degats": {
+      "dice": 12,
+      "fixe": 20
+    },
+    "violence": {
+      "dice": 12,
+      "fixe": 40
+    },
+    "portee": "Lointaine",
+    "effets": {
+      "raw": [
+        "antianatheme",
+        "fureur",
+        "meurtrier",
+        "demoralisant",
+        "briserlaresilience"
+      ],
+      "custom": [ ]
+    }
+  },
+  "souffleDemoniaque": {
+    "description": "",
+    "noyaux": 2,
+    "activation": "Combat",
+    "degats": {
+      "dice": 8,
+      "fixe": 30
+    },
+    "violence": {
+      "dice": 0,
+      "fixe": 1
+    },
+    "portee": "Contact",
+    "effets": {
+      "raw": [
+        "parasitage 2",
+        "briserlaresilience"
+      ],
+      "custom": [ ]
+    }
+  },
+  "poingsSoniques": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Combat",
+    "degats": {
+      "dice": 6,
+      "fixe": 30
+    },
+    "violence": {
+      "dice": 8,
+      "fixe": 20
+    },
+    "portee": "Contact",
+    "effets": {
+      "raw": [ ],
+      "custom": [ ]
+    }
+  },
+  "chocSonique": {
+    "description": "",
+    "noyaux": 6,
+    "activation": "Combat",
+    "portee": "Courte",
+    "effets": {
+      "raw": [
+        "choc 2",
+        "choc 4",
+        "choc 6"
+      ],
+      "custom": [ ]
+    }
+  },
+  "bouclierAmrita": {
+    "description": "",
+    "noyaux": 4,
+    "activation": "Deplacement",
+    "duree": "",
+    "bonus": {
+      "resilience": 4,
+      "defense": 4,
+      "reaction": 4,
+      "champDeForce": 4
+    }
+  },
+  "offering": {
+    "description": "",
+    "noyaux": {
+      "min": 1,
+      "max": 5,
+      "actuel": 1
+    },
+    "activation": "Combat",
+    "duree": 1,
+    "portee": "Moyenne"
+  },
+  "curse": {
+    "description": "",
+    "special": {
+      "degats": 4,
+      "reussite": 4,
+      "baisserresilience": {
+        "roll": 1,
+        "fixe": 3
+      },
+      "champdeforce": 1,
+      "annulerresilience": 1,
+      "choc": "1d3 + 1"
+    },
+    "activation": "Combat",
+    "duree": 1,
+    "portee": "Moyenne"
+  },
+  "podMiracle": {
+    "description": "",
+    "noyaux": 5,
+    "activation": "Combat",
+    "portee": "Contact",
+    "blindage": 60,
+    "resilience": 1,
+    "champDeForce": 10,
+    "duree": 2,
+    "recuperation": {
+      "sante": 3,
+      "resilience": 1,
+      "armure": 3,
+      "blindage": 1
+    }
+  },
+  "podInvulnerabilite": {
+    "description": "",
+    "noyaux": 3,
+    "activation": "Combat",
+    "duree": 2,
+    "portee": "Courte"
+  },
+  "dronesEvacuation": {
+    "description": "",
+    "noyaux": {
+      "min": 1,
+      "max": 5,
+      "actuel": 1
+    },
+    "activation": "Deplacement",
+    "duree": 1,
+    "portee": "Zone"
+  },
+  "dronesAirain": {
+    "description": "",
+    "noyaux": 5,
+    "activation": "Combat",
+    "duree": "Sanslimite",
+    "portee": "Longue"
+  },
+  "moduleEmblem": {
+    "description": "",
+    "noyaux": 3,
+    "activation": "Deplacement",
+    "duree": "",
+    "portee": "Longue"
+  },
+  "moduleInferno": {
+    "description": "",
+    "noyaux": 5,
+    "activation": "Combat",
+    "cdf": "1d3",
+    "degats": {
+      "dice": 10,
+      "fixe": 20
+    },
+    "violence": {
+      "dice": 10,
+      "fixe": 20
+    },
+    "duree": "Instantanee",
+    "portee": "Courte"
+  },
+  "moduleWraith": {
+    "description": "",
+    "noyaux": {
+      "base": 3,
+      "prolonger": 1
+    },
+    "activation": "Deplacement",
+    "duree": ""
+  },
+  "stationDefenseAutomatise": {
+    "description": "",
+    "noyaux": 12,
+    "activation": "Combat",
+    "duree": "Sanslimite",
+    "portee": "Moyenne",
+    "debordement": 10,
+    "blindage": 80,
+    "resilience": 1,
+    "champDeForce": 10
+  },
+  "modeSiegeTower": {
+    "description": "",
+    "noyaux": 4,
+    "activation": "Deplacement",
+    "duree": "",
+    "bonus": {
+      "resilience": 10
+    }
+  },
+  "nanoBrume": {
+    "description": "",
+    "noyaux": 1,
+    "activation": "Deplacement",
+    "duree": "Tour",
+    "bonus": {
+      "defense": 3,
+      "reaction": 3
+    }
+  }
+}
