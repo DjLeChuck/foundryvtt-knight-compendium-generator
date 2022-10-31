@@ -10,7 +10,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
     name: 'app:compendium:mecha-armours',
-    description: 'Génération du compendium des mécha-armures',
+    description: 'Génération du compendium des mecha-armures',
 )]
 class CompendiumMechaArmoursCommand extends AbstractCompendiumCommand
 {
