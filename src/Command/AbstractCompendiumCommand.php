@@ -86,7 +86,7 @@ abstract class AbstractCompendiumCommand extends Command
 
         if (!$isMultiple) {
             $filesystem->dumpFile(
-                sprintf('var/%s.db', $this->getPluralizedType()),
+                sprintf('var/packs/%s.db', $this->getPluralizedType()),
                 implode(PHP_EOL, $dataset)
             );
 
@@ -95,7 +95,7 @@ abstract class AbstractCompendiumCommand extends Command
 
         foreach ($dataset as $pack => $items) {
             $filesystem->dumpFile(
-                sprintf('var/%s-%s.db', $this->getPluralizedType(), $pack),
+                sprintf('var/packs/%s-%s.db', $this->getPluralizedType(), $pack),
                 implode(PHP_EOL, $items)
             );
         }
