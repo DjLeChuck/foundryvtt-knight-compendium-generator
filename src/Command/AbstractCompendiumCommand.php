@@ -101,11 +101,16 @@ abstract class AbstractCompendiumCommand extends Command
         }
     }
 
+    protected function getTplName(): string
+    {
+        return sprintf('%s_tpl.json', $this->getType());
+    }
+
     protected function getBaseData(): array
     {
         if (null === $this->itemTemplate) {
             $this->itemTemplate = json_decode(
-                file_get_contents(sprintf('var/data/%s_tpl.json', $this->getType())),
+                file_get_contents(sprintf('var/data/%s', $this->getTplName())),
                 true,
                 512,
                 JSON_THROW_ON_ERROR
