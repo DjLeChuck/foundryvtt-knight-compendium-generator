@@ -19,8 +19,8 @@ class CompendiumModulesCommand extends AbstractCompendiumCommand
         $io = new SymfonyStyle($input, $output);
         $items = [];
 
-        foreach ($this->api->get('module') as $data) {
-            $apiData = $this->api->get('module/'.$data['id']);
+        foreach ($this->getList() as $data) {
+            $apiData = $this->getItem($data['id']);
             $slotData = current($apiData['slots']);
             $nbLevels = \count($apiData['levels']);
             $itemData = $this->getBaseData();
