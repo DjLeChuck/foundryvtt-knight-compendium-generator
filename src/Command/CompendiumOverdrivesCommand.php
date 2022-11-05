@@ -39,14 +39,15 @@ class CompendiumOverdrivesCommand extends AbstractCompendiumCommand
             $itemData['_id'] = $this->generateId($name);
             $itemData['name'] = $name;
             $itemData['system']['description'] = $this->cleanDescription($apiData['description']);
-            $itemData['system']['rarity'] = $this->getRarity($apiData['rarity']);
+            $itemData['system']['rarete'] = $this->getRarity($apiData['rarity']);
             $itemData['system']['prix'] = $apiData['cost'];
+            $itemData['system']['permanent'] = true;
             $itemData['system']['overdrives']['has'] = true;
             $aspectName = $this->getSlugifiedName($apiData['characteristic']['aspect']);
             $caracName = $this->getSlugifiedName($apiData['characteristic']['name']);
             $itemData['system']['overdrives']['aspects'][$aspectName][$caracName] = $apiData['level'];
 
-            $items['base'][] = $this->serializeData($itemData);
+            $items[$itemData['system']['rarete']][] = $this->serializeData($itemData);
         }
 
         try {
