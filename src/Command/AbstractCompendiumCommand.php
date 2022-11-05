@@ -80,18 +80,9 @@ abstract class AbstractCompendiumCommand extends Command
         );
     }
 
-    protected function dumpCompendium(array $dataset, bool $isMultiple = true): void
+    protected function dumpCompendium(array $dataset): void
     {
         $filesystem = new Filesystem();
-
-        if (!$isMultiple) {
-            $filesystem->dumpFile(
-                sprintf('var/packs/%s.db', $this->getPluralizedType()),
-                implode(PHP_EOL, $dataset)
-            );
-
-            return;
-        }
 
         foreach ($dataset as $pack => $items) {
             $filesystem->dumpFile(
